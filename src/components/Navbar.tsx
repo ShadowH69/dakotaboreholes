@@ -1,16 +1,28 @@
 import { useState } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, Droplets, Wrench } from "lucide-react";
 import logo from "@/assets/dakota-logo.png";
+import { Switch } from "@/components/ui/switch";
+import { useSiteMode } from "@/contexts/SiteModeContext";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const { mode, setMode } = useSiteMode();
 
-  const links = [
+  const boreholeLinks = [
     { label: "Home", href: "#home" },
     { label: "Services", href: "#services" },
     { label: "Why Survey", href: "#why-survey" },
     { label: "Contact", href: "#contact" },
   ];
+
+  const plumbingLinks = [
+    { label: "Home", href: "#home" },
+    { label: "Services", href: "#services" },
+    { label: "Why Dakota", href: "#why-survey" },
+    { label: "Contact", href: "#contact" },
+  ];
+
+  const links = mode === "borehole" ? boreholeLinks : plumbingLinks;
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-40 bg-foreground/90 backdrop-blur-md">
