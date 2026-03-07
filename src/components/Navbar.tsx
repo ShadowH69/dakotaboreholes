@@ -75,6 +75,18 @@ const Navbar = () => {
 
       {open && (
         <div className="md:hidden bg-foreground/95 border-t border-primary-foreground/10 px-4 pb-4">
+          {/* Mobile Mode Switch */}
+          <div className="flex items-center justify-center gap-2 py-3 border-b border-primary-foreground/10 mb-2">
+            <Droplets size={14} className={`transition-colors ${mode === "borehole" ? "text-water" : "text-primary-foreground/40"}`} />
+            <span className={`font-heading text-xs uppercase tracking-wider transition-colors ${mode === "borehole" ? "text-primary-foreground" : "text-primary-foreground/40"}`}>Boreholes</span>
+            <Switch
+              checked={mode === "plumbing"}
+              onCheckedChange={(checked) => setMode(checked ? "plumbing" : "borehole")}
+              className="data-[state=checked]:bg-secondary data-[state=unchecked]:bg-water"
+            />
+            <span className={`font-heading text-xs uppercase tracking-wider transition-colors ${mode === "plumbing" ? "text-primary-foreground" : "text-primary-foreground/40"}`}>Plumbing</span>
+            <Wrench size={14} className={`transition-colors ${mode === "plumbing" ? "text-secondary" : "text-primary-foreground/40"}`} />
+          </div>
           {links.map((l) => (
             <a
               key={l.href}
