@@ -33,7 +33,7 @@ const Navbar = () => {
             <span className="font-heading text-lg font-bold text-primary-foreground leading-tight block">
               DAKOTA PLUMBING
             </span>
-            <span className="text-xs text-primary-foreground/70">& Borehole Drilling</span>
+            <span className="text-xs text-primary-foreground/70">{mode === "borehole" ? "& Borehole Drilling" : "Plumbing Services"}</span>
           </div>
         </a>
 
