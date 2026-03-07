@@ -1,13 +1,29 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState, useCallback } from "react";
+import WaterSplash from "@/components/WaterSplash";
+import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/HeroSection";
+import ServicesSection from "@/components/ServicesSection";
+import WhySurveySection from "@/components/WhySurveySection";
+import ContactSection from "@/components/ContactSection";
+import Footer from "@/components/Footer";
 
 const Index = () => {
+  const [splashDone, setSplashDone] = useState(false);
+
+  const handleSplashComplete = useCallback(() => {
+    setSplashDone(true);
+  }, []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <>
+      {!splashDone && <WaterSplash onComplete={handleSplashComplete} />}
+      <Navbar />
+      <HeroSection />
+      <ServicesSection />
+      <WhySurveySection />
+      <ContactSection />
+      <Footer />
+    </>
   );
 };
 
