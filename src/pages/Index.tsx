@@ -2,7 +2,11 @@ import { useState, useCallback } from "react";
 import WaterSplash from "@/components/WaterSplash";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import SolutionSection from "@/components/SolutionSection";
 import ServicesSection from "@/components/ServicesSection";
+import GeoSurveyingSection from "@/components/GeoSurveyingSection";
+import BoreholeDrillingSection from "@/components/BoreholeDrillingSection";
+import PumpReticulationSection from "@/components/PumpReticulationSection";
 import WhySurveySection from "@/components/WhySurveySection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
@@ -19,7 +23,11 @@ const Index = () => {
       {!splashDone && <WaterSplash onComplete={handleSplashComplete} />}
       <Navbar />
       <HeroSection />
+      <SolutionSection />
       <ServicesSection />
+      <GeoSurveyingSection />
+      <BoreholeDrillingSection />
+      <PumpReticulationSection />
       <WhySurveySection />
       <ContactSection />
       <Footer />
