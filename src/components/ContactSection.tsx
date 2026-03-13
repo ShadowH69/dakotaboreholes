@@ -1,13 +1,10 @@
 import { Phone, Mail, MapPin } from "lucide-react";
-import servicesBg from "@/assets/services-bg.jpg";
+import contactBg from "@/assets/slide-findwater.jpg";
 
 const ContactSection = () => {
   return (
     <section id="contact" className="relative py-24 overflow-hidden">
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${servicesBg})` }}
-      />
+      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${contactBg})` }} />
       <div className="absolute inset-0 bg-foreground/85" />
 
       <div className="relative z-10 container mx-auto px-4">
