@@ -1,56 +1,44 @@
-import { Search, Drill, Droplets, Container } from "lucide-react";
+import logo from "@/assets/dakota-logo.png";
 import servicesBg from "@/assets/slide-services.jpg";
-
-const services = [
-  {
-    icon: Search,
-    title: "Geo Surveys",
-    desc: "Advanced geophysical surveying to identify water-bearing zones, ground conditions, and optimal drilling points.",
-  },
-  {
-    icon: Drill,
-    title: "Borehole Drilling",
-    desc: "Professional borehole drilling with modern rigs. We manage every stage from survey to completion.",
-  },
-  {
-    icon: Droplets,
-    title: "Pump Installation",
-    desc: "Solar or electrical pump systems tailored to your water demand with complete reticulation.",
-  },
-  {
-    icon: Container,
-    title: "Tank Installation",
-    desc: "Water storage solutions with JoJo tanks, plumbing connections, and pressure systems.",
-  },
-];
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="relative py-24 overflow-hidden">
+    <section id="services" className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${servicesBg})` }} />
-      <div className="absolute inset-0 bg-background/90" />
-      <div className="relative z-10 container mx-auto px-4">
-        <h2 className="font-heading text-4xl md:text-5xl font-bold uppercase text-center text-foreground">
-          Our <span className="text-primary">Services</span>
-        </h2>
-        <p className="text-center text-muted-foreground mt-4 max-w-xl mx-auto font-body">
-          From identifying the best water-bearing zones to installing pumps and treatment systems, we manage every stage of your borehole project.
-        </p>
+      <div className="absolute inset-0 bg-gradient-to-b from-foreground/20 via-transparent to-foreground/40" />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
-          {services.map((s) => (
-            <div
-              key={s.title}
-              className="group bg-card rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-border hover:-translate-y-2"
-            >
-              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                <s.icon size={28} className="text-primary group-hover:text-primary-foreground transition-colors" />
-              </div>
-              <h3 className="font-heading text-xl font-semibold uppercase text-foreground">{s.title}</h3>
-              <p className="mt-3 text-muted-foreground font-body text-sm leading-relaxed">{s.desc}</p>
-            </div>
-          ))}
+      <div className="relative z-10 container mx-auto px-4 py-20">
+        {/* Logo top right area */}
+        <div className="flex justify-end mb-8">
+          <div className="text-right">
+            <img src={logo} alt="Dakota Plumbing" className="h-16 md:h-20 w-auto ml-auto drop-shadow-lg" />
+            <p className="text-primary-foreground/60 font-body text-xs tracking-widest mt-1">
+              Dakota Plumbing (Pty) Ltd · Reg 2011/105031/07
+            </p>
+          </div>
         </div>
+
+        <h2 className="font-heading text-5xl md:text-7xl font-bold uppercase text-primary-foreground drop-shadow-lg text-right"
+          style={{ textShadow: '3px 3px 6px rgba(0,0,0,0.5)' }}
+        >
+          Our Services
+        </h2>
+
+        {/* Frosted info box */}
+        <div className="mt-8 max-w-2xl rounded-md border border-primary-foreground/30 px-8 py-6"
+          style={{ background: 'hsla(200, 60%, 40%, 0.55)', backdropFilter: 'blur(8px)' }}
+        >
+          <p className="text-primary-foreground font-body text-lg leading-relaxed">
+            From identifying the best water-bearing zones to installing pumps and treatment systems, we manage every stage of your borehole project. Our integrated approach ensures efficiency, quality, and long-term performance.
+          </p>
+        </div>
+
+        {/* Service keywords */}
+        <p className="mt-10 font-heading text-xl md:text-2xl uppercase tracking-wider text-primary-foreground/90"
+          style={{ textShadow: '1px 1px 4px rgba(0,0,0,0.5)' }}
+        >
+          Surveys &nbsp;-&nbsp; Boreholes &nbsp;-&nbsp; Pump Installation &nbsp;-&nbsp; Tank Installation
+        </p>
       </div>
     </section>
   );

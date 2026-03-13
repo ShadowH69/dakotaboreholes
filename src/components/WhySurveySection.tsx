@@ -1,45 +1,67 @@
 import { Droplet, Ruler, Gauge, Layers, Microscope, ShieldCheck } from "lucide-react";
+import logo from "@/assets/dakota-logo.png";
 import whySurveyBg from "@/assets/slide-whysurvey.jpg";
 
 const reasons = [
-  { icon: Droplet, title: "Ensure Feasible Water Supply", desc: "Eliminate the 'dry hole' risk. Our hydrogeologists pinpoint the exact spot with the highest possible yield." },
-  { icon: Ruler, title: "Determine Proper Depth", desc: "Know how deep you need to go before the rig arrives. Determine depth and cost upfront." },
-  { icon: Gauge, title: "Right Pump Size", desc: "We assess and identify water-bearing fractures, ensuring sustainable aquifers and not just surface seepage." },
-  { icon: Layers, title: "Material Analysis", desc: "Identify soil types for proper casing to prevent shaft collapse." },
-  { icon: Microscope, title: "Scientific Approach", desc: "Underground analysis up to 300m depth using cutting-edge geophysical equipment." },
-  { icon: ShieldCheck, title: "Secure Investment", desc: "Ensure your borehole site meets municipal bylaws and distance requirements." },
+  { num: 1, icon: Droplet, title: "Ensure Feasible Water Supply", desc: "Eliminate the 'Dry Hole' Risk: Drilling without a survey is a R100,000+ gamble. Our hydrogeologists pinpoint the exact spot with the highest possible yield!" },
+  { num: 2, icon: Ruler, title: "Determine Proper Depth", desc: "Determine Depth & Cost: Know how deep you need to go before the rig arrives." },
+  { num: 3, icon: Gauge, title: "Right Pump Size", desc: "Quality Assessment: We assess and identify water-bearing fractures, ensuring sustainable aquifers and not just surface seepage." },
+  { num: 4, icon: Layers, title: "Material Analysis", desc: "Identify soil types for proper casing to prevent shaft collapse." },
+  { num: 5, icon: Microscope, title: "Scientific Approach", desc: "Only fools drill blindly without underground analysis up to 300m depth!" },
+  { num: 6, icon: ShieldCheck, title: "Secure Investment", desc: "Legal & Compliance: Ensure your borehole site meets municipal bylaws and distance requirements from septic tanks." },
 ];
 
 const WhySurveySection = () => {
   return (
-    <section id="why-survey" className="relative py-24 overflow-hidden">
+    <section id="why-survey" className="relative min-h-screen flex items-center overflow-hidden">
       <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${whySurveyBg})` }} />
-      <div className="absolute inset-0 bg-foreground/80" />
-      <div className="relative z-10 container mx-auto px-4">
-        <h2 className="font-heading text-4xl md:text-5xl font-bold uppercase text-center text-primary-foreground">
-          Why <span className="text-gold">Survey First?</span>
-        </h2>
-        <p className="text-center text-primary-foreground/70 mt-4 max-w-lg mx-auto font-body italic">
-          Don't gamble with your boreholes. Drilling without a survey is a R100,000+ risk.
-        </p>
+      <div className="absolute inset-0 bg-foreground/50" />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
-          {reasons.map((r) => (
-            <div
-              key={r.title}
-              className="bg-primary/10 backdrop-blur-sm rounded-lg p-6 border border-primary/20 hover:border-gold/50 transition-colors"
+      <div className="relative z-10 container mx-auto px-4 py-20">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left side - title & logo */}
+          <div>
+            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight italic"
+              style={{ textShadow: '2px 2px 6px rgba(0,0,0,0.5)' }}
             >
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
-                  <r.icon size={20} className="text-accent-foreground" />
+              Why it's important to do a Geo Survey before drilling
+            </h2>
+            <div className="mt-8">
+              <img src={logo} alt="Dakota Plumbing" className="h-16 md:h-24 w-auto drop-shadow-lg" />
+              <p className="text-primary-foreground/60 font-body text-xs tracking-widest mt-1">
+                Dakota Plumbing (Pty) Ltd
+              </p>
+            </div>
+          </div>
+
+          {/* Right side - numbered cards grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {reasons.map((r) => (
+              <div
+                key={r.title}
+                className="rounded-lg overflow-hidden border border-primary/40"
+                style={{ background: 'hsla(207, 70%, 35%, 0.9)' }}
+              >
+                {/* Number badge + icon */}
+                <div className="flex items-center gap-2 px-4 pt-4 pb-2">
+                  <span className="w-8 h-8 rounded-md bg-primary flex items-center justify-center font-heading text-sm font-bold text-primary-foreground">
+                    {r.num}
+                  </span>
+                  <r.icon size={28} className="text-gold" />
                 </div>
-                <div>
-                  <h3 className="font-heading text-lg font-semibold uppercase text-primary-foreground">{r.title}</h3>
-                  <p className="mt-2 text-primary-foreground/70 text-sm leading-relaxed font-body">{r.desc}</p>
+                {/* Title */}
+                <h3 className="px-4 font-heading text-base font-bold uppercase text-primary-foreground leading-tight">
+                  {r.title}
+                </h3>
+                {/* Description */}
+                <div className="mt-2 mx-3 mb-3 rounded bg-primary-foreground/10 p-3">
+                  <p className="text-primary-foreground/80 font-body text-xs leading-relaxed">
+                    {r.desc}
+                  </p>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

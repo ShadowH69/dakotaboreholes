@@ -44,6 +44,8 @@
     --font-heading: 'Oswald', sans-serif;
     --font-body: 'Source Sans 3', sans-serif;
 
+    --frost-box: 200 60% 40%;
+
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
