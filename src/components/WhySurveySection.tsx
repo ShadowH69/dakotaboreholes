@@ -1,4 +1,5 @@
 import { Droplet, Ruler, Gauge, Layers, Microscope, ShieldCheck } from "lucide-react";
+import whySurveyBg from "@/assets/slide-whysurvey.jpg";
 
 const reasons = [
   { icon: Droplet, title: "Ensure Feasible Water Supply", desc: "Eliminate the 'dry hole' risk. Our hydrogeologists pinpoint the exact spot with the highest possible yield." },
@@ -11,8 +12,10 @@ const reasons = [
 
 const WhySurveySection = () => {
   return (
-    <section id="why-survey" className="py-24 bg-foreground">
-      <div className="container mx-auto px-4">
+    <section id="why-survey" className="relative py-24 overflow-hidden">
+      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${whySurveyBg})` }} />
+      <div className="absolute inset-0 bg-foreground/80" />
+      <div className="relative z-10 container mx-auto px-4">
         <h2 className="font-heading text-4xl md:text-5xl font-bold uppercase text-center text-primary-foreground">
           Why <span className="text-gold">Survey First?</span>
         </h2>
@@ -21,7 +24,7 @@ const WhySurveySection = () => {
         </p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
-          {reasons.map((r, i) => (
+          {reasons.map((r) => (
             <div
               key={r.title}
               className="bg-primary/10 backdrop-blur-sm rounded-lg p-6 border border-primary/20 hover:border-gold/50 transition-colors"

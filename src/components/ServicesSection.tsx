@@ -1,4 +1,5 @@
 import { Search, Drill, Droplets, Container } from "lucide-react";
+import servicesBg from "@/assets/slide-services.jpg";
 
 const services = [
   {
@@ -25,8 +26,10 @@ const services = [
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="py-24 bg-background">
-      <div className="container mx-auto px-4">
+    <section id="services" className="relative py-24 overflow-hidden">
+      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${servicesBg})` }} />
+      <div className="absolute inset-0 bg-background/90" />
+      <div className="relative z-10 container mx-auto px-4">
         <h2 className="font-heading text-4xl md:text-5xl font-bold uppercase text-center text-foreground">
           Our <span className="text-primary">Services</span>
         </h2>
@@ -35,7 +38,7 @@ const ServicesSection = () => {
         </p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
-          {services.map((s, i) => (
+          {services.map((s) => (
             <div
               key={s.title}
               className="group bg-card rounded-lg p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-border hover:-translate-y-2"

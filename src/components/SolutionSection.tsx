@@ -1,7 +1,11 @@
+import solutionBg from "@/assets/slide-solution.jpg";
+
 const SolutionSection = () => {
   return (
-    <section id="solution" className="py-24 bg-foreground">
-      <div className="container mx-auto px-4 text-center">
+    <section id="solution" className="relative py-24 overflow-hidden">
+      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${solutionBg})` }} />
+      <div className="absolute inset-0 bg-foreground/75" />
+      <div className="relative z-10 container mx-auto px-4 text-center">
         <h2 className="font-heading text-4xl md:text-5xl font-bold uppercase text-primary-foreground">
           Our <span className="text-gold">Solution</span>
         </h2>
