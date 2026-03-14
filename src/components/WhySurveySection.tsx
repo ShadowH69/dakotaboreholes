@@ -1,62 +1,39 @@
 import { Droplet, Ruler, Gauge, Layers, Microscope, ShieldCheck } from "lucide-react";
-import logo from "@/assets/dakota-logo.png";
 
 const reasons = [
-  { num: 1, icon: Droplet, title: "Ensure Feasible Water Supply", desc: "Eliminate the 'Dry Hole' Risk: Drilling without a survey is a R100,000+ gamble. Our hydrogeologists pinpoint the exact spot with the highest possible yield!" },
-  { num: 2, icon: Ruler, title: "Determine Proper Depth", desc: "Determine Depth & Cost: Know how deep you need to go before the rig arrives." },
-  { num: 3, icon: Gauge, title: "Right Pump Size", desc: "Quality Assessment: We assess and identify water-bearing fractures, ensuring sustainable aquifers and not just surface seepage." },
-  { num: 4, icon: Layers, title: "Material Analysis", desc: "Identify soil types for proper casing to prevent shaft collapse." },
-  { num: 5, icon: Microscope, title: "Scientific Approach", desc: "Only fools drill blindly without underground analysis up to 300m depth!" },
-  { num: 6, icon: ShieldCheck, title: "Secure Investment", desc: "Legal & Compliance: Ensure your borehole site meets municipal bylaws and distance requirements from septic tanks." },
+  { num: "01", icon: Droplet, title: "Ensure Water Supply", desc: "Eliminate the 'Dry Hole' Risk — drilling without a survey is a R100,000+ gamble." },
+  { num: "02", icon: Ruler, title: "Determine Depth", desc: "Know how deep you need to go before the rig arrives, controlling costs upfront." },
+  { num: "03", icon: Gauge, title: "Quality Assessment", desc: "Identify water-bearing fractures ensuring sustainable aquifers, not surface seepage." },
+  { num: "04", icon: Layers, title: "Material Analysis", desc: "Identify soil types for proper casing to prevent shaft collapse." },
+  { num: "05", icon: Microscope, title: "Scientific Approach", desc: "Professional underground analysis up to 300m depth using advanced technology." },
+  { num: "06", icon: ShieldCheck, title: "Legal Compliance", desc: "Ensure your borehole meets municipal bylaws and distance requirements." },
 ];
 
 const WhySurveySection = () => {
   return (
-    <section id="why-survey" className="relative min-h-screen flex items-center overflow-hidden"
-      style={{ background: 'linear-gradient(135deg, hsl(207, 80%, 14%), hsl(207, 70%, 22%), hsl(200, 65%, 28%))' }}
-    >
-      <div className="absolute inset-0 opacity-8"
-        style={{ backgroundImage: 'radial-gradient(circle at 60% 40%, hsl(200, 80%, 45%) 0%, transparent 50%), radial-gradient(circle at 20% 80%, hsl(38, 70%, 55%) 0%, transparent 30%)' }}
-      />
+    <section id="why-survey" className="relative py-24 bg-foreground">
+      <div className="container mx-auto px-4">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <span className="font-heading text-sm uppercase tracking-[0.2em] text-secondary">Important</span>
+          <h2 className="font-heading text-4xl md:text-5xl font-bold text-primary-foreground mt-3 leading-tight">
+            Why Survey Before Drilling?
+          </h2>
+          <p className="mt-4 text-primary-foreground/60 font-body text-lg leading-relaxed">
+            A professional geo survey is the most critical step. Here's why you should never drill blind.
+          </p>
+        </div>
 
-      <div className="relative z-10 container mx-auto px-4 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight italic">
-              Why it's important to do a Geo Survey before drilling
-            </h2>
-            <div className="mt-8">
-              <img src={logo} alt="Dakota Plumbing" className="h-16 md:h-24 w-auto drop-shadow-lg" />
-              <p className="text-primary-foreground/60 font-body text-xs tracking-widest mt-1">
-                Dakota Plumbing (Pty) Ltd
-              </p>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            {reasons.map((r) => (
-              <div
-                key={r.title}
-                className="rounded-lg overflow-hidden border border-water/30"
-                style={{ background: 'hsla(207, 70%, 25%, 0.7)', backdropFilter: 'blur(8px)' }}
-              >
-                <div className="flex items-center gap-2 px-4 pt-4 pb-2">
-                  <span className="w-8 h-8 rounded-md bg-primary flex items-center justify-center font-heading text-sm font-bold text-primary-foreground">
-                    {r.num}
-                  </span>
-                  <r.icon size={28} className="text-gold" />
-                </div>
-                <h3 className="px-4 font-heading text-base font-bold uppercase text-primary-foreground leading-tight">
-                  {r.title}
-                </h3>
-                <div className="mt-2 mx-3 mb-3 rounded bg-primary-foreground/10 p-3">
-                  <p className="text-primary-foreground/80 font-body text-xs leading-relaxed">
-                    {r.desc}
-                  </p>
-                </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {reasons.map((r) => (
+            <div key={r.title} className="p-6 rounded-lg border border-primary-foreground/10 bg-primary-foreground/[0.03] hover:bg-primary-foreground/[0.06] transition-all duration-300 group">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="font-heading text-3xl font-bold text-primary-foreground/15 group-hover:text-secondary/40 transition-colors">{r.num}</span>
+                <r.icon size={22} className="text-secondary" />
               </div>
-            ))}
-          </div>
+              <h3 className="font-heading text-lg font-bold uppercase text-primary-foreground">{r.title}</h3>
+              <p className="mt-2 text-primary-foreground/60 font-body text-sm leading-relaxed">{r.desc}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

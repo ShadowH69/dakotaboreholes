@@ -1,39 +1,50 @@
-import logo from "@/assets/dakota-logo.png";
+import { Search, Drill, Wrench, Container } from "lucide-react";
+
+const services = [
+  { icon: Search, title: "Geophysical Surveying", desc: "Using advanced techniques to analyse ground conditions, locate water-bearing fractures, and determine optimal drilling points.", color: "text-water" },
+  { icon: Drill, title: "Borehole Drilling", desc: "Professional drilling with methods selected based on ground conditions to ensure structural integrity and optimal yield.", color: "text-primary" },
+  { icon: Wrench, title: "Pump Installation", desc: "Reliable solar or electrical pump systems tailored to your water demand with complete reticulation to tanks, homes, and irrigation.", color: "text-secondary" },
+  { icon: Container, title: "Tank & Reticulation", desc: "Complete water storage and distribution systems ensuring efficient delivery from borehole to point of use.", color: "text-gold" },
+];
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="relative min-h-[80vh] flex items-center justify-center overflow-hidden"
-      style={{ background: 'linear-gradient(145deg, hsl(207, 85%, 18%), hsl(195, 70%, 25%), hsl(207, 65%, 30%))' }}
-    >
-      <div className="absolute inset-0 opacity-10"
-        style={{ backgroundImage: 'radial-gradient(circle at 30% 70%, hsl(200, 80%, 55%) 0%, transparent 50%)' }}
-      />
-
-      <div className="relative z-10 container mx-auto px-4 py-20">
-        <div className="flex justify-end mb-8">
-          <div className="text-right">
-            <img src={logo} alt="Dakota Plumbing" className="h-16 md:h-20 w-auto ml-auto drop-shadow-lg" />
-            <p className="text-primary-foreground/60 font-body text-xs tracking-widest mt-1">
-              Dakota Plumbing (Pty) Ltd · Reg 2011/105031/07
+    <section id="services" className="relative py-24 bg-foreground">
+      <div className="container mx-auto px-4">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
+          {/* Left — sticky heading */}
+          <div className="lg:sticky lg:top-32">
+            <span className="font-heading text-sm uppercase tracking-[0.2em] text-secondary">What we do</span>
+            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold uppercase text-primary-foreground mt-3 leading-tight">
+              Our<br />Services
+            </h2>
+            <p className="mt-6 text-primary-foreground/60 font-body text-lg leading-relaxed max-w-md">
+              From identifying the best water-bearing zones to installing pumps and treatment systems, we manage every stage of your borehole project.
             </p>
+            <div className="mt-8 flex gap-6">
+              <a href="#contact" className="inline-flex items-center justify-center bg-secondary px-6 py-3 rounded font-heading text-sm uppercase tracking-wider text-secondary-foreground hover:brightness-110 transition">
+                Get a Quote
+              </a>
+            </div>
+          </div>
+
+          {/* Right — service cards */}
+          <div className="space-y-4">
+            {services.map((s) => (
+              <div key={s.title} className="group p-6 md:p-8 rounded-lg border border-primary-foreground/10 bg-primary-foreground/[0.03] hover:bg-primary-foreground/[0.06] transition-all duration-300">
+                <div className="flex items-start gap-5">
+                  <div className="w-12 h-12 rounded-lg bg-primary-foreground/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <s.icon size={24} className={s.color} />
+                  </div>
+                  <div>
+                    <h3 className="font-heading text-xl font-bold uppercase text-primary-foreground">{s.title}</h3>
+                    <p className="mt-2 text-primary-foreground/60 font-body text-sm leading-relaxed">{s.desc}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-
-        <h2 className="font-heading text-5xl md:text-7xl font-bold uppercase text-primary-foreground drop-shadow-lg text-right">
-          Our Services
-        </h2>
-
-        <div className="mt-8 max-w-2xl rounded-md border border-primary-foreground/20 px-8 py-6"
-          style={{ background: 'hsla(200, 60%, 40%, 0.35)', backdropFilter: 'blur(12px)' }}
-        >
-          <p className="text-primary-foreground font-body text-lg leading-relaxed">
-            From identifying the best water-bearing zones to installing pumps and treatment systems, we manage every stage of your borehole project. Our integrated approach ensures efficiency, quality, and long-term performance.
-          </p>
-        </div>
-
-        <p className="mt-10 font-heading text-xl md:text-2xl uppercase tracking-wider text-primary-foreground/90">
-          Surveys &nbsp;-&nbsp; Boreholes &nbsp;-&nbsp; Pump Installation &nbsp;-&nbsp; Tank Installation
-        </p>
       </div>
     </section>
   );

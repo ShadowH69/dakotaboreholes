@@ -1,46 +1,36 @@
-import logo from "@/assets/dakota-logo.png";
+import { Radar, Layers, Target, BarChart3, MapPin, CheckCircle } from "lucide-react";
+
+const features = [
+  { icon: Radar, title: "Advanced Equipment", desc: "State-of-the-art geophysical survey equipment for accurate subsurface analysis." },
+  { icon: Layers, title: "Ground Analysis", desc: "Comprehensive assessment of soil layers and geological formations." },
+  { icon: Target, title: "Precision Targeting", desc: "Pinpoint the exact location of water-bearing fractures and aquifers." },
+  { icon: BarChart3, title: "Yield Estimation", desc: "Accurate water yield predictions before any drilling begins." },
+  { icon: MapPin, title: "Site Mapping", desc: "Complete site surveys ensuring optimal borehole positioning." },
+  { icon: CheckCircle, title: "Risk Elimination", desc: "Eliminate the costly 'dry hole' risk with scientific data." },
+];
 
 const GeoSurveyingSection = () => {
   return (
-    <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden"
-      style={{ background: 'linear-gradient(150deg, hsl(38, 50%, 22%), hsl(30, 45%, 28%), hsl(25, 40%, 22%))' }}
-    >
-      <div className="absolute inset-0 opacity-10"
-        style={{ backgroundImage: 'radial-gradient(circle at 80% 80%, hsl(38, 70%, 55%) 0%, transparent 40%)' }}
-      />
-
-      <div className="relative z-10 container mx-auto px-4 py-20">
-        <div className="mb-8">
-          <img src={logo} alt="Dakota Plumbing" className="h-16 md:h-24 w-auto drop-shadow-lg" />
-          <p className="text-primary-foreground/60 font-body text-xs tracking-widest mt-1">
-            Dakota Plumbing (Pty) Ltd · Reg 2011/105031/07
+    <section className="relative py-24 bg-background">
+      <div className="container mx-auto px-4">
+        <div className="max-w-2xl mb-16">
+          <span className="font-heading text-sm uppercase tracking-[0.2em] text-secondary">Step 1</span>
+          <h2 className="font-heading text-4xl md:text-5xl font-bold uppercase text-foreground mt-3">
+            Geophysical Surveying
+          </h2>
+          <p className="mt-4 text-muted-foreground font-body text-lg leading-relaxed">
+            We use advanced geophysical surveying techniques to analyse ground conditions, ensuring accurate targeting and optimal yield — up to 300m depth.
           </p>
         </div>
 
-        <h2 className="font-heading text-5xl md:text-7xl font-bold uppercase text-primary-foreground drop-shadow-lg">
-          Geophysical Surveying
-        </h2>
-
-        <div className="mt-8 max-w-xl rounded-md border border-gold/30 px-8 py-6 ml-auto mr-0 md:mr-16"
-          style={{ background: 'hsla(30, 40%, 25%, 0.6)', backdropFilter: 'blur(12px)' }}
-        >
-          <p className="text-primary-foreground font-body text-lg leading-relaxed mb-4">
-            We use advanced geophysical surveying techniques:
-          </p>
-          <ul className="space-y-2">
-            <li className="flex items-center gap-3">
-              <span className="w-2 h-2 rounded-full bg-gold flex-shrink-0" />
-              <span className="text-primary-foreground font-heading text-lg uppercase">Ground conditions</span>
-            </li>
-            <li className="flex items-center gap-3">
-              <span className="w-2 h-2 rounded-full bg-gold flex-shrink-0" />
-              <span className="text-primary-foreground font-heading text-lg uppercase">Ensuring structural integrity</span>
-            </li>
-            <li className="flex items-center gap-3">
-              <span className="w-2 h-2 rounded-full bg-gold flex-shrink-0" />
-              <span className="text-primary-foreground font-heading text-lg uppercase">Optimal yield</span>
-            </li>
-          </ul>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map((f) => (
+            <div key={f.title} className="p-6 rounded-lg border border-border bg-card hover:border-primary/30 hover:shadow-md transition-all duration-300">
+              <f.icon size={22} className="text-primary mb-4" />
+              <h3 className="font-heading text-lg font-bold uppercase text-foreground">{f.title}</h3>
+              <p className="mt-2 text-muted-foreground font-body text-sm leading-relaxed">{f.desc}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
