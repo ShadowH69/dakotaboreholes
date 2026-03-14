@@ -2,42 +2,39 @@ import { Phone, Mail, MapPin } from "lucide-react";
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="relative py-24 overflow-hidden"
-      style={{ background: 'linear-gradient(160deg, hsl(210, 40%, 10%), hsl(207, 50%, 15%), hsl(210, 35%, 12%))' }}
-    >
-      <div className="absolute inset-0 opacity-10"
-        style={{ backgroundImage: 'radial-gradient(circle at 50% 0%, hsl(38, 70%, 55%) 0%, transparent 40%)' }}
-      />
+    <section id="contact" className="relative py-24 bg-background">
+      <div className="container mx-auto px-4">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <span className="font-heading text-sm uppercase tracking-[0.2em] text-secondary">Let's talk</span>
+          <h2 className="font-heading text-4xl md:text-5xl font-bold uppercase text-foreground mt-3">
+            Get In Touch
+          </h2>
+          <p className="mt-4 text-muted-foreground font-body text-lg leading-relaxed">
+            Ready to find water? Contact us for a geo water survey starting at just R2,500.
+          </p>
+        </div>
 
-      <div className="relative z-10 container mx-auto px-4">
-        <h2 className="font-heading text-4xl md:text-5xl font-bold uppercase text-center text-primary-foreground">
-          Get In <span className="text-gold">Touch</span>
-        </h2>
-        <p className="text-center text-primary-foreground/70 mt-4 max-w-md mx-auto font-body">
-          Ready to find water? Contact us for a geo water survey starting at just R2,500.
-        </p>
-
-        <div className="grid md:grid-cols-3 gap-8 mt-16 max-w-4xl mx-auto">
-          <a href="tel:0712857397" className="flex flex-col items-center gap-4 p-8 rounded-lg border border-primary-foreground/10 hover:border-gold/50 transition group"
-            style={{ background: 'hsla(207, 60%, 25%, 0.5)', backdropFilter: 'blur(12px)' }}
-          >
-            <Phone size={32} className="text-gold group-hover:scale-110 transition-transform" />
-            <span className="font-heading text-lg text-primary-foreground">071 285 7397</span>
-            <span className="text-primary-foreground/60 text-sm">077 493 8076</span>
+        <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <a href="tel:0712857397" className="flex flex-col items-center gap-4 p-8 rounded-lg border border-border bg-card hover:border-primary/30 hover:shadow-lg transition-all duration-300 group">
+            <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <Phone size={24} className="text-primary" />
+            </div>
+            <span className="font-heading text-lg text-foreground">071 285 7397</span>
+            <span className="text-muted-foreground text-sm">077 493 8076</span>
           </a>
-          <a href="mailto:dakotaboreholes@gmail.com" className="flex flex-col items-center gap-4 p-8 rounded-lg border border-primary-foreground/10 hover:border-gold/50 transition group"
-            style={{ background: 'hsla(207, 60%, 25%, 0.5)', backdropFilter: 'blur(12px)' }}
-          >
-            <Mail size={32} className="text-gold group-hover:scale-110 transition-transform" />
-            <span className="font-heading text-sm text-primary-foreground">dakotaboreholes@gmail.com</span>
-            <span className="text-primary-foreground/60 text-xs">boreholeman2011@gmail.com</span>
+          <a href="mailto:dakotaboreholes@gmail.com" className="flex flex-col items-center gap-4 p-8 rounded-lg border border-border bg-card hover:border-primary/30 hover:shadow-lg transition-all duration-300 group">
+            <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <Mail size={24} className="text-primary" />
+            </div>
+            <span className="font-heading text-sm text-foreground">dakotaboreholes@gmail.com</span>
+            <span className="text-muted-foreground text-xs">boreholeman2011@gmail.com</span>
           </a>
-          <div className="flex flex-col items-center gap-4 p-8 rounded-lg border border-primary-foreground/10"
-            style={{ background: 'hsla(207, 60%, 25%, 0.5)', backdropFilter: 'blur(12px)' }}
-          >
-            <MapPin size={32} className="text-gold" />
-            <span className="font-heading text-lg text-primary-foreground text-center">South Africa</span>
-            <span className="text-primary-foreground/60 text-sm text-center">Dakota Plumbing (Pty) Ltd<br/>Reg 2011/105031/07</span>
+          <div className="flex flex-col items-center gap-4 p-8 rounded-lg border border-border bg-card">
+            <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
+              <MapPin size={24} className="text-primary" />
+            </div>
+            <span className="font-heading text-lg text-foreground text-center">South Africa</span>
+            <span className="text-muted-foreground text-sm text-center">Dakota Plumbing (Pty) Ltd<br/>Reg 2011/105031/07</span>
           </div>
         </div>
 
@@ -46,7 +43,7 @@ const ContactSection = () => {
             href="https://wa.me/27712857397"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-green-600 hover:bg-green-700 px-8 py-4 rounded-md font-heading text-lg uppercase tracking-wider text-primary-foreground transition"
+            className="inline-flex items-center gap-3 bg-green-600 hover:bg-green-700 px-8 py-4 rounded font-heading text-lg uppercase tracking-wider text-primary-foreground transition"
           >
             💬 WhatsApp Us
           </a>

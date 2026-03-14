@@ -1,47 +1,46 @@
-import logo from "@/assets/dakota-logo.png";
+import { Sun, Plug, Droplets } from "lucide-react";
+import pumpBg from "@/assets/slide-pump.jpg";
+
+const options = [
+  { icon: Sun, title: "Solar Pumps", desc: "Sustainable, off-grid pump systems powered by solar energy for remote locations." },
+  { icon: Plug, title: "Electrical Pumps", desc: "High-capacity electrical pump installations for commercial and residential use." },
+  { icon: Droplets, title: "Reticulation", desc: "Complete water delivery systems to tanks, homes, and irrigation networks." },
+];
 
 const PumpReticulationSection = () => {
   return (
-    <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden"
-      style={{ background: 'linear-gradient(155deg, hsl(30, 50%, 18%), hsl(38, 55%, 25%), hsl(35, 45%, 20%))' }}
-    >
-      <div className="absolute inset-0 opacity-10"
-        style={{ backgroundImage: 'radial-gradient(circle at 20% 30%, hsl(38, 70%, 55%) 0%, transparent 45%)' }}
-      />
-
-      <div className="relative z-10 container mx-auto px-4 py-20">
-        <h2 className="font-heading text-5xl md:text-7xl font-bold uppercase text-primary-foreground drop-shadow-lg text-right">
-          Pump and Reticulation
-        </h2>
-
-        <div className="mt-8 max-w-xl ml-auto rounded-md border border-gold/30 px-8 py-6"
-          style={{ background: 'hsla(30, 40%, 25%, 0.6)', backdropFilter: 'blur(12px)' }}
-        >
-          <p className="text-primary-foreground font-body text-lg leading-relaxed mb-4">
-            We install reliable solar or electrical pump systems tailored to your water demand. Complete reticulation systems ensure efficient water delivery:
-          </p>
-          <ul className="space-y-2">
-            <li className="flex items-center gap-3">
-              <span className="w-2 h-2 rounded-full bg-gold flex-shrink-0" />
-              <span className="text-primary-foreground font-heading text-lg uppercase">To tanks</span>
-            </li>
-            <li className="flex items-center gap-3">
-              <span className="w-2 h-2 rounded-full bg-gold flex-shrink-0" />
-              <span className="text-primary-foreground font-heading text-lg uppercase">To homes</span>
-            </li>
-            <li className="flex items-center gap-3">
-              <span className="w-2 h-2 rounded-full bg-gold flex-shrink-0" />
-              <span className="text-primary-foreground font-heading text-lg uppercase">And irrigation systems</span>
-            </li>
-          </ul>
-        </div>
-
-        <div className="mt-12 flex justify-end">
-          <div className="text-right">
-            <img src={logo} alt="Dakota Plumbing" className="h-14 md:h-20 w-auto ml-auto drop-shadow-lg" />
-            <p className="text-primary-foreground/60 font-body text-xs tracking-widest mt-1">
-              Dakota Plumbing (Pty) Ltd · Reg 2011/105031/07
+    <section className="relative py-24 bg-background">
+      <div className="container mx-auto px-4">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Left — Content */}
+          <div>
+            <span className="font-heading text-sm uppercase tracking-[0.2em] text-secondary">Step 3</span>
+            <h2 className="font-heading text-4xl md:text-5xl font-bold uppercase text-foreground mt-3 leading-tight">
+              Pump &<br />Reticulation
+            </h2>
+            <p className="mt-6 text-muted-foreground font-body text-lg leading-relaxed">
+              We install reliable pump systems tailored to your water demand with complete distribution networks.
             </p>
+
+            <div className="mt-10 space-y-6">
+              {options.map((o) => (
+                <div key={o.title} className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <o.icon size={20} className="text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-heading text-lg font-bold uppercase text-foreground">{o.title}</h3>
+                    <p className="text-muted-foreground font-body text-sm leading-relaxed mt-1">{o.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right — Image */}
+          <div className="relative rounded-lg overflow-hidden aspect-[4/3]">
+            <img src={pumpBg} alt="Pump installation" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 to-transparent" />
           </div>
         </div>
       </div>
