@@ -1,6 +1,5 @@
 import { Droplet, Ruler, Gauge, Layers, Microscope, ShieldCheck } from "lucide-react";
 import logo from "@/assets/dakota-logo.png";
-import whySurveyBg from "@/assets/slide-whysurvey.jpg";
 
 const reasons = [
   { num: 1, icon: Droplet, title: "Ensure Feasible Water Supply", desc: "Eliminate the 'Dry Hole' Risk: Drilling without a survey is a R100,000+ gamble. Our hydrogeologists pinpoint the exact spot with the highest possible yield!" },
@@ -13,17 +12,17 @@ const reasons = [
 
 const WhySurveySection = () => {
   return (
-    <section id="why-survey" className="relative min-h-screen flex items-center overflow-hidden">
-      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${whySurveyBg})` }} />
-      <div className="absolute inset-0 bg-foreground/50" />
+    <section id="why-survey" className="relative min-h-screen flex items-center overflow-hidden"
+      style={{ background: 'linear-gradient(135deg, hsl(207, 80%, 14%), hsl(207, 70%, 22%), hsl(200, 65%, 28%))' }}
+    >
+      <div className="absolute inset-0 opacity-8"
+        style={{ backgroundImage: 'radial-gradient(circle at 60% 40%, hsl(200, 80%, 45%) 0%, transparent 50%), radial-gradient(circle at 20% 80%, hsl(38, 70%, 55%) 0%, transparent 30%)' }}
+      />
 
       <div className="relative z-10 container mx-auto px-4 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left side - title & logo */}
           <div>
-            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight italic"
-              style={{ textShadow: '2px 2px 6px rgba(0,0,0,0.5)' }}
-            >
+            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight italic">
               Why it's important to do a Geo Survey before drilling
             </h2>
             <div className="mt-8">
@@ -34,26 +33,22 @@ const WhySurveySection = () => {
             </div>
           </div>
 
-          {/* Right side - numbered cards grid */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {reasons.map((r) => (
               <div
                 key={r.title}
-                className="rounded-lg overflow-hidden border border-primary/40"
-                style={{ background: 'hsla(207, 70%, 35%, 0.9)' }}
+                className="rounded-lg overflow-hidden border border-water/30"
+                style={{ background: 'hsla(207, 70%, 25%, 0.7)', backdropFilter: 'blur(8px)' }}
               >
-                {/* Number badge + icon */}
                 <div className="flex items-center gap-2 px-4 pt-4 pb-2">
                   <span className="w-8 h-8 rounded-md bg-primary flex items-center justify-center font-heading text-sm font-bold text-primary-foreground">
                     {r.num}
                   </span>
                   <r.icon size={28} className="text-gold" />
                 </div>
-                {/* Title */}
                 <h3 className="px-4 font-heading text-base font-bold uppercase text-primary-foreground leading-tight">
                   {r.title}
                 </h3>
-                {/* Description */}
                 <div className="mt-2 mx-3 mb-3 rounded bg-primary-foreground/10 p-3">
                   <p className="text-primary-foreground/80 font-body text-xs leading-relaxed">
                     {r.desc}
