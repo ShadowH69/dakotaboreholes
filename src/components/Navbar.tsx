@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import logo from "@/assets/dakota-logo.png";
 
@@ -9,6 +10,7 @@ const Navbar = () => {
     { label: "Home", href: "#home" },
     { label: "Services", href: "#services" },
     { label: "Why Survey", href: "#why-survey" },
+    { label: "FAQ", href: "/faq" },
     { label: "Contact", href: "#contact" },
   ];
 
@@ -26,15 +28,25 @@ const Navbar = () => {
         </a>
 
         <div className="hidden md:flex items-center gap-8">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="font-heading text-sm uppercase tracking-wider text-primary-foreground/80 hover:text-gold transition-colors"
-            >
-              {l.label}
-            </a>
-          ))}
+          {links.map((l) =>
+            l.href.startsWith("/") ? (
+              <Link
+                key={l.href}
+                to={l.href}
+                className="font-heading text-sm uppercase tracking-wider text-primary-foreground/80 hover:text-gold transition-colors"
+              >
+                {l.label}
+              </Link>
+            ) : (
+              <a
+                key={l.href}
+                href={l.href}
+                className="font-heading text-sm uppercase tracking-wider text-primary-foreground/80 hover:text-gold transition-colors"
+              >
+                {l.label}
+              </a>
+            )
+          )}
           <a
             href="tel:0712857397"
             className="flex items-center gap-2 bg-secondary px-4 py-2 rounded-md font-heading text-sm uppercase tracking-wider text-secondary-foreground hover:brightness-110 transition"
@@ -50,16 +62,27 @@ const Navbar = () => {
 
       {open && (
         <div className="md:hidden bg-foreground/95 border-t border-primary-foreground/10 px-4 pb-4">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={() => setOpen(false)}
-              className="block py-3 font-heading text-sm uppercase tracking-wider text-primary-foreground/80 hover:text-gold transition-colors"
-            >
-              {l.label}
-            </a>
-          ))}
+          {links.map((l) =>
+            l.href.startsWith("/") ? (
+              <Link
+                key={l.href}
+                to={l.href}
+                onClick={() => setOpen(false)}
+                className="block py-3 font-heading text-sm uppercase tracking-wider text-primary-foreground/80 hover:text-gold transition-colors"
+              >
+                {l.label}
+              </Link>
+            ) : (
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className="block py-3 font-heading text-sm uppercase tracking-wider text-primary-foreground/80 hover:text-gold transition-colors"
+              >
+                {l.label}
+              </a>
+            )
+          )}
           <a
             href="tel:0712857397"
             className="flex items-center justify-center gap-2 mt-2 bg-secondary px-4 py-3 rounded-md font-heading text-sm uppercase tracking-wider text-secondary-foreground"
