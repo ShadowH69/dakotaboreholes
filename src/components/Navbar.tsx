@@ -28,15 +28,25 @@ const Navbar = () => {
         </a>
 
         <div className="hidden md:flex items-center gap-8">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="font-heading text-sm uppercase tracking-wider text-primary-foreground/80 hover:text-gold transition-colors"
-            >
-              {l.label}
-            </a>
-          ))}
+          {links.map((l) =>
+            l.href.startsWith("/") ? (
+              <Link
+                key={l.href}
+                to={l.href}
+                className="font-heading text-sm uppercase tracking-wider text-primary-foreground/80 hover:text-gold transition-colors"
+              >
+                {l.label}
+              </Link>
+            ) : (
+              <a
+                key={l.href}
+                href={l.href}
+                className="font-heading text-sm uppercase tracking-wider text-primary-foreground/80 hover:text-gold transition-colors"
+              >
+                {l.label}
+              </a>
+            )
+          )}
           <a
             href="tel:0712857397"
             className="flex items-center gap-2 bg-secondary px-4 py-2 rounded-md font-heading text-sm uppercase tracking-wider text-secondary-foreground hover:brightness-110 transition"
