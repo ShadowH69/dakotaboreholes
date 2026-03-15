@@ -11,7 +11,7 @@ const Navbar = () => {
     { label: "Services", href: "#services" },
     { label: "Why Survey", href: "#why-survey" },
     { label: "FAQ", href: "/faq" },
-    { label: "Contact", href: "#contact" },
+    { label: "Contact", href: "/contact" },
   ];
 
   return (
