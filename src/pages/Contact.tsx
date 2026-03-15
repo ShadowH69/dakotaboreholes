@@ -40,7 +40,7 @@ const Contact = () => {
       <section className="w-full h-[350px] md:h-[420px]">
         <iframe
           title="Dakota Plumbing Location"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3580.5!2d28.0!3d-26.25!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDE1JzAwLjAiUyAyOMKwMDAnMDAuMCJF!5e0!3m2!1sen!2sza!4v1700000000000"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.9999999999995!2d28.009861!3d-26.2441689!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e95092929d1a67b%3A0x98552f4c63d5ae3c!2s5%20Delamere%20Rd%2C%20Robertsham%2C%20Johannesburg%20South%2C%202091!5e0!3m2!1sen!2sza!4v1700000000000"
           width="100%"
           height="100%"
           style={{ border: 0 }}
