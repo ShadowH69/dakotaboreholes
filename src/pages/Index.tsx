@@ -30,6 +30,7 @@ const Index = () => {
       <BoreholeDrillingSection />
       <PumpReticulationSection />
       <WhySurveySection />
+      <TestimonialsSection />
       <ContactSection />
       <Footer />
     </>
