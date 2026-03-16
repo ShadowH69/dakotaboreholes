@@ -4,12 +4,32 @@ import Footer from "@/components/Footer";
 import { Plus, Trash2, X, ImageIcon } from "lucide-react";
 
 const STORAGE_KEY = "dakota-gallery-images";
+const MAX_WIDTH = 800;
+const QUALITY = 0.6;
 
 interface GalleryImage {
   id: string;
   src: string;
   caption: string;
 }
+
+const compressImage = (file: File): Promise<string> => {
+  return new Promise((resolve) => {
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      const ratio = Math.min(MAX_WIDTH / img.width, 1);
+      canvas.width = img.width * ratio;
+      canvas.height = img.height * ratio;
+      const ctx = canvas.getContext("2d")!;
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      URL.revokeObjectURL(url);
+      resolve(canvas.toDataURL("image/jpeg", QUALITY));
+    };
+    img.src = url;
+  });
+};
 
 const Gallery = () => {
   const [images, setImages] = useState<GalleryImage[]>([]);
@@ -27,24 +47,26 @@ const Gallery = () => {
 
   const save = (imgs: GalleryImage[]) => {
     setImages(imgs);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(imgs));
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(imgs));
+    } catch (e) {
+      alert("Storage is full. Try removing some images first or uploading smaller files.");
+    }
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      const newImg: GalleryImage = {
-        id: Date.now().toString(),
-        src: reader.result as string,
-        caption: caption || file.name,
-      };
-      save([...images, newImg]);
-      setCaption("");
-      setShowAdd(false);
+    const compressed = await compressImage(file);
+    const newImg: GalleryImage = {
+      id: Date.now().toString(),
+      src: compressed,
+      caption: caption || file.name,
     };
-    reader.readAsDataURL(file);
+    save([...images, newImg]);
+    setCaption("");
+    setShowAdd(false);
+    if (fileRef.current) fileRef.current.value = "";
   };
 
   const removeImage = (id: string) => {
