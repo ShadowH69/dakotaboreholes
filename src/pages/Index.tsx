@@ -8,6 +8,7 @@ import GeoSurveyingSection from "@/components/GeoSurveyingSection";
 import BoreholeDrillingSection from "@/components/BoreholeDrillingSection";
 import PumpReticulationSection from "@/components/PumpReticulationSection";
 import WhySurveySection from "@/components/WhySurveySection";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
