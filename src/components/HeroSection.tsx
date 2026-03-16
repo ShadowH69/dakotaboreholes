@@ -4,11 +4,12 @@ import heroBg from "@/assets/hero-main.jpg";
 
 const HeroSection = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-foreground">
-      {/* Subtle pattern overlay */}
-      <div className="absolute inset-0 opacity-[0.03]"
-        style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '40px 40px' }}
-      />
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Hero background image */}
+      <div className="absolute inset-0">
+        <img src={heroBg} alt="" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-foreground/70" />
+      </div>
 
       <div className="relative z-10 container mx-auto px-4 pt-28 pb-20">
         <div className="grid lg:grid-cols-2 gap-16 items-center">

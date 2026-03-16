@@ -53,27 +53,16 @@ const Navbar = () => {
 
       {open && (
         <div className="md:hidden bg-foreground/95 border-t border-primary-foreground/10 px-4 pb-4">
-          {links.map((l) =>
-            l.href.startsWith("/") ? (
-              <Link
-                key={l.href}
-                to={l.href}
-                onClick={() => setOpen(false)}
-                className="block py-3 font-heading text-sm uppercase tracking-wider text-primary-foreground/80 hover:text-gold transition-colors"
-              >
-                {l.label}
-              </Link>
-            ) : (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className="block py-3 font-heading text-sm uppercase tracking-wider text-primary-foreground/80 hover:text-gold transition-colors"
-              >
-                {l.label}
-              </a>
-            )
-          )}
+          {links.map((l) => (
+            <Link
+              key={l.href}
+              to={l.href}
+              onClick={() => setOpen(false)}
+              className="block py-3 font-heading text-sm uppercase tracking-wider text-primary-foreground/80 hover:text-gold transition-colors"
+            >
+              {l.label}
+            </Link>
+          ))}
           <a
             href="tel:0712857397"
             className="flex items-center justify-center gap-2 mt-2 bg-secondary px-4 py-3 rounded-md font-heading text-sm uppercase tracking-wider text-secondary-foreground"
