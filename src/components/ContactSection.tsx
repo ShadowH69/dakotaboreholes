@@ -1,6 +1,10 @@
+import { useState } from "react";
 import { Phone, Mail, MapPin } from "lucide-react";
+import QuoteFormDialog from "./QuoteFormDialog";
 
 const ContactSection = () => {
+  const [quoteOpen, setQuoteOpen] = useState(false);
+
   return (
     <section id="contact" className="relative py-24 bg-background">
       <div className="container mx-auto px-4">
