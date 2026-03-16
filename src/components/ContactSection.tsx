@@ -1,6 +1,10 @@
+import { useState } from "react";
 import { Phone, Mail, MapPin } from "lucide-react";
+import QuoteFormDialog from "./QuoteFormDialog";
 
 const ContactSection = () => {
+  const [quoteOpen, setQuoteOpen] = useState(false);
+
   return (
     <section id="contact" className="relative py-24 bg-background">
       <div className="container mx-auto px-4">
@@ -38,7 +42,7 @@ const ContactSection = () => {
           </div>
         </div>
 
-        <div className="text-center mt-12">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12">
           <a
             href="https://wa.me/27712857397"
             target="_blank"
@@ -47,7 +51,14 @@ const ContactSection = () => {
           >
             💬 WhatsApp Us
           </a>
+          <button
+            onClick={() => setQuoteOpen(true)}
+            className="inline-flex items-center gap-3 bg-secondary hover:brightness-110 px-8 py-4 rounded font-heading text-lg uppercase tracking-wider text-secondary-foreground transition"
+          >
+            📋 Quotes
+          </button>
         </div>
+        <QuoteFormDialog open={quoteOpen} onClose={() => setQuoteOpen(false)} />
       </div>
     </section>
   );
