@@ -1,5 +1,6 @@
 import { ArrowDown, Droplets, Shield, Zap } from "lucide-react";
 import logo from "@/assets/dakota-logo.png";
+import heroBg from "@/assets/hero-main.jpg";
 
 const HeroSection = () => {
   return (
