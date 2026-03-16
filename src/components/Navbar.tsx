@@ -18,7 +18,7 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-40 bg-foreground/90 backdrop-blur-md">
       <div className="container mx-auto flex items-center justify-between py-3 px-4">
-        <a href="#home" className="flex items-center gap-3">
+        <a href="/#home" className="flex items-center gap-3">
           <img src={logo} alt="Dakota Plumbing" className="h-12 w-auto" />
           <div className="hidden sm:block">
             <span className="font-heading text-lg font-bold text-primary-foreground leading-tight block">
