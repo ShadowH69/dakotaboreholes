@@ -148,3 +148,38 @@
   height: 1px;
   background: linear-gradient(90deg, transparent, hsl(var(--border)), transparent);
 }
+
+.social-icon {
+  display: inline-flex;
+  height: 2.75rem;
+  width: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid hsl(var(--primary-foreground) / 0.1);
+  background: hsl(var(--primary-foreground) / 0.05);
+  color: hsl(var(--primary-foreground) / 0.6);
+  transition: color 200ms ease, box-shadow 200ms ease, transform 200ms ease, border-color 200ms ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-2px);
+}
+
+.social-icon--instagram:hover {
+  color: hsl(var(--social-instagram));
+  border-color: hsl(var(--social-instagram) / 0.45);
+  box-shadow: 0 0 18px hsl(var(--social-instagram) / 0.45);
+}
+
+.social-icon--facebook:hover {
+  color: hsl(var(--social-facebook));
+  border-color: hsl(var(--social-facebook) / 0.45);
+  box-shadow: 0 0 18px hsl(var(--social-facebook) / 0.45);
+}
+
+.social-icon--youtube:hover {
+  color: hsl(var(--social-youtube));
+  border-color: hsl(var(--social-youtube) / 0.45);
+  box-shadow: 0 0 18px hsl(var(--social-youtube) / 0.45);
+}
