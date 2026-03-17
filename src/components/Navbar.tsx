@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import logo from "@/assets/dakota-logo.png";
 
@@ -29,14 +28,14 @@ const Navbar = () => {
         </a>
 
         <div className="hidden md:flex items-center gap-8">
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              to={l.href}
+          {links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
               className="font-heading text-sm uppercase tracking-wider text-primary-foreground/80 hover:text-gold transition-colors"
             >
-              {l.label}
-            </Link>
+              {link.label}
+            </a>
           ))}
           <a
             href="tel:0712857397"
@@ -46,22 +45,22 @@ const Navbar = () => {
           </a>
         </div>
 
-        <button onClick={() => setOpen(!open)} className="md:hidden text-primary-foreground">
+        <button onClick={() => setOpen(!open)} className="md:hidden text-primary-foreground" aria-label="Toggle menu">
           {open ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
       {open && (
         <div className="md:hidden bg-foreground/95 border-t border-primary-foreground/10 px-4 pb-4">
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              to={l.href}
+          {links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
               onClick={() => setOpen(false)}
               className="block py-3 font-heading text-sm uppercase tracking-wider text-primary-foreground/80 hover:text-gold transition-colors"
             >
-              {l.label}
-            </Link>
+              {link.label}
+            </a>
           ))}
           <a
             href="tel:0712857397"
