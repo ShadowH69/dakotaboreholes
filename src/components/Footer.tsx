@@ -25,7 +25,7 @@ const Footer = () => (
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-primary-foreground/10 bg-primary-foreground/5 text-primary-foreground/60 transition-colors hover:text-secondary"
+              className="social-icon social-icon--instagram"
             >
               <Instagram size={18} />
             </a>
@@ -34,7 +34,7 @@ const Footer = () => (
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-primary-foreground/10 bg-primary-foreground/5 text-primary-foreground/60 transition-colors hover:text-secondary"
+              className="social-icon social-icon--facebook"
             >
               <Facebook size={18} />
             </a>
@@ -43,7 +43,7 @@ const Footer = () => (
               target="_blank"
               rel="noopener noreferrer"
               aria-label="YouTube"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-primary-foreground/10 bg-primary-foreground/5 text-primary-foreground/60 transition-colors hover:text-secondary"
+              className="social-icon social-icon--youtube"
             >
               <Youtube size={18} />
             </a>

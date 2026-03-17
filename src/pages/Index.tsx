@@ -1,5 +1,4 @@
 import { useState, useCallback } from "react";
-import { useNavigationType } from "react-router-dom";
 import WaterSplash from "@/components/WaterSplash";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
@@ -13,21 +12,10 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
-const SPLASH_SESSION_KEY = "dakota-home-splash-played";
-
 const Index = () => {
-  const navigationType = useNavigationType();
-  const [splashDone, setSplashDone] = useState(() => {
-    if (typeof window === "undefined") return true;
-
-    const hasPlayed = window.sessionStorage.getItem(SPLASH_SESSION_KEY) === "true";
-    const shouldPlay = navigationType === "POP" && !hasPlayed;
-
-    return !shouldPlay;
-  });
+  const [splashDone, setSplashDone] = useState(false);
 
   const handleSplashComplete = useCallback(() => {
-    window.sessionStorage.setItem(SPLASH_SESSION_KEY, "true");
     setSplashDone(true);
   }, []);
 
