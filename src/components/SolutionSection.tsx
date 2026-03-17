@@ -1,4 +1,5 @@
-import { Search, Drill, Wrench, Container } from "lucide-react";
+import { Container, Drill, Search, Wrench } from "lucide-react";
+import solutionImage from "@/assets/solution-clean.jpeg";
 
 const steps = [
   { icon: Search, title: "Survey", desc: "Advanced geophysical surveying to locate the best water-bearing zones up to 300m deep." },
@@ -9,35 +10,49 @@ const steps = [
 
 const SolutionSection = () => {
   return (
-    <section id="solution" className="relative py-24 bg-background">
+    <section id="solution" className="relative py-24 bg-background overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="font-heading text-sm uppercase tracking-[0.2em] text-secondary">How we work</span>
-          <h2 className="font-heading text-4xl md:text-5xl font-bold uppercase text-foreground mt-3">
-            Our Solution
-          </h2>
-          <p className="mt-4 text-muted-foreground font-body text-lg leading-relaxed">
-            A complete turnkey groundwater solution — from professional water surveys to fully equipped, working boreholes.
-          </p>
-        </div>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {steps.map((step, i) => (
-            <div key={step.title} className="relative group">
-              {/* Connector line */}
-              {i < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-10 left-[60%] w-[80%] h-px bg-border" />
-              )}
-              <div className="relative bg-card rounded-lg border border-border p-8 hover:border-primary/30 hover:shadow-lg transition-all duration-300">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-5">
-                  <step.icon size={24} className="text-primary" />
-                </div>
-                <span className="font-heading text-xs uppercase tracking-[0.15em] text-secondary">Step {i + 1}</span>
-                <h3 className="font-heading text-2xl font-bold uppercase text-foreground mt-1">{step.title}</h3>
-                <p className="mt-3 text-muted-foreground font-body text-sm leading-relaxed">{step.desc}</p>
-              </div>
+        <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div className="relative overflow-hidden rounded-[2rem] border border-border bg-card shadow-xl">
+            <img
+              src={solutionImage}
+              alt="Borehole drilling equipment working at sunset"
+              loading="lazy"
+              className="h-[420px] w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/15 to-transparent" />
+            <div className="absolute left-6 bottom-6 max-w-md rounded-2xl border border-primary-foreground/15 bg-foreground/55 p-5 backdrop-blur-sm">
+              <p className="font-heading text-sm uppercase tracking-[0.2em] text-secondary">Turnkey approach</p>
+              <p className="mt-2 text-primary-foreground/85 leading-relaxed">
+                One coordinated team handling the survey, drilling, pump setup, and final water delivery.
+              </p>
             </div>
-          ))}
+          </div>
+
+          <div>
+            <span className="font-heading text-sm uppercase tracking-[0.2em] text-secondary">How we work</span>
+            <h2 className="mt-3 font-heading text-4xl font-bold uppercase text-foreground md:text-5xl">
+              Our Solution
+            </h2>
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">
+              A complete groundwater solution designed to feel simple on your side and expertly managed on ours.
+            </p>
+
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {steps.map((step, i) => (
+                <div key={step.title} className="rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-lg">
+                  <div className="mb-4 flex items-center justify-between">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
+                      <step.icon size={22} className="text-primary" />
+                    </div>
+                    <span className="font-heading text-xs uppercase tracking-[0.2em] text-secondary">Step {i + 1}</span>
+                  </div>
+                  <h3 className="font-heading text-2xl font-bold uppercase text-foreground">{step.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{step.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

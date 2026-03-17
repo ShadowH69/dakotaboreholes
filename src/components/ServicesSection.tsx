@@ -1,48 +1,64 @@
-import { Search, Drill, Wrench, Container } from "lucide-react";
+import { Container, Drill, Search, Wrench } from "lucide-react";
+import servicesImage from "@/assets/services-clean.jpeg";
 
 const services = [
-  { icon: Search, title: "Geophysical Surveying", desc: "Using advanced techniques to analyse ground conditions, locate water-bearing fractures, and determine optimal drilling points.", color: "text-water" },
-  { icon: Drill, title: "Borehole Drilling", desc: "Professional drilling with methods selected based on ground conditions to ensure structural integrity and optimal yield.", color: "text-primary" },
-  { icon: Wrench, title: "Pump Installation", desc: "Reliable solar or electrical pump systems tailored to your water demand with complete reticulation to tanks, homes, and irrigation.", color: "text-secondary" },
-  { icon: Container, title: "Tank & Reticulation", desc: "Complete water storage and distribution systems ensuring efficient delivery from borehole to point of use.", color: "text-gold" },
+  { icon: Search, title: "Geophysical Surveying", desc: "Using advanced techniques to analyse ground conditions, locate water-bearing fractures, and determine optimal drilling points." },
+  { icon: Drill, title: "Borehole Drilling", desc: "Professional drilling with methods selected based on ground conditions to ensure structural integrity and optimal yield." },
+  { icon: Wrench, title: "Pump Installation", desc: "Reliable solar or electrical pump systems tailored to your water demand with complete reticulation to tanks, homes, and irrigation." },
+  { icon: Container, title: "Tank & Reticulation", desc: "Complete water storage and distribution systems ensuring efficient delivery from borehole to point of use." },
 ];
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="relative py-24 bg-foreground">
+    <section id="services" className="relative py-24 bg-foreground overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* Left — sticky heading */}
+        <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div className="lg:sticky lg:top-32">
             <span className="font-heading text-sm uppercase tracking-[0.2em] text-secondary">What we do</span>
-            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold uppercase text-primary-foreground mt-3 leading-tight">
-              Our<br />Services
+            <h2 className="mt-3 font-heading text-4xl font-bold uppercase leading-tight text-primary-foreground md:text-5xl lg:text-6xl">
+              Our Services
             </h2>
-            <p className="mt-6 text-primary-foreground/60 font-body text-lg leading-relaxed max-w-md">
-              From identifying the best water-bearing zones to installing pumps and treatment systems, we manage every stage of your borehole project.
+            <p className="mt-6 max-w-md text-lg leading-relaxed text-primary-foreground/65">
+              Technical capability in the field, polished delivery for the client, and one brand language across the full project.
             </p>
-            <div className="mt-8 flex gap-6">
-              <a href="#contact" className="inline-flex items-center justify-center bg-secondary px-6 py-3 rounded font-heading text-sm uppercase tracking-wider text-secondary-foreground hover:brightness-110 transition">
-                Get a Quote
-              </a>
-            </div>
+            <a
+              href="/#contact"
+              className="mt-8 inline-flex items-center justify-center rounded-md bg-secondary px-6 py-3 font-heading text-sm uppercase tracking-wider text-secondary-foreground transition hover:brightness-110"
+            >
+              Get a Quote
+            </a>
           </div>
 
-          {/* Right — service cards */}
-          <div className="space-y-4">
-            {services.map((s) => (
-              <div key={s.title} className="group p-6 md:p-8 rounded-lg border border-primary-foreground/10 bg-primary-foreground/[0.03] hover:bg-primary-foreground/[0.06] transition-all duration-300">
-                <div className="flex items-start gap-5">
-                  <div className="w-12 h-12 rounded-lg bg-primary-foreground/10 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                    <s.icon size={24} className={s.color} />
-                  </div>
-                  <div>
-                    <h3 className="font-heading text-xl font-bold uppercase text-primary-foreground">{s.title}</h3>
-                    <p className="mt-2 text-primary-foreground/60 font-body text-sm leading-relaxed">{s.desc}</p>
-                  </div>
-                </div>
+          <div className="space-y-5">
+            <div className="relative overflow-hidden rounded-[2rem] border border-primary-foreground/10 bg-primary-foreground/[0.04]">
+              <img
+                src={servicesImage}
+                alt="Dakota drilling truck and field equipment prepared for borehole services"
+                loading="lazy"
+                className="h-[360px] w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
+                <p className="max-w-xl font-body text-primary-foreground/85 md:text-lg">
+                  From surveying to final installation, every service is planned to work as one connected system.
+                </p>
               </div>
-            ))}
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              {services.map((service) => (
+                <div
+                  key={service.title}
+                  className="group rounded-2xl border border-primary-foreground/10 bg-primary-foreground/[0.04] p-6 transition-all duration-300 hover:bg-primary-foreground/[0.08]"
+                >
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-foreground/10 transition-transform group-hover:scale-105">
+                    <service.icon size={22} className="text-secondary" />
+                  </div>
+                  <h3 className="font-heading text-xl font-bold uppercase text-primary-foreground">{service.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-primary-foreground/65">{service.desc}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
