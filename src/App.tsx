@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
 import Gallery from "./pages/Gallery";
+import Packages from "./pages/Packages";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
