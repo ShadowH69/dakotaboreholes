@@ -159,7 +159,7 @@ const Packages = () => {
         </div>
       </section>
 
-      <QuoteFormDialog open={quoteOpen} onOpenChange={setQuoteOpen} defaultPackage={selectedPackage} />
+      {quoteOpen && <QuoteFormDialog open={quoteOpen} onClose={() => setQuoteOpen(false)} />}
       <Footer />
     </div>
   );

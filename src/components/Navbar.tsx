@@ -9,6 +9,7 @@ const Navbar = () => {
     { label: "Home", href: "/#home" },
     { label: "Services", href: "/#services" },
     { label: "Why Survey", href: "/#why-survey" },
+    { label: "Packages", href: "/packages" },
     { label: "Gallery", href: "/gallery" },
     { label: "FAQ", href: "/faq" },
     { label: "Contact", href: "/contact" },
