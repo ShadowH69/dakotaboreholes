@@ -1,5 +1,6 @@
 import { Droplet, Gauge, Layers, Microscope, Ruler, ShieldCheck } from "lucide-react";
 import whySurveyImage from "@/assets/why-survey-clean.jpeg";
+import { RevealWrapper } from "@/hooks/useScrollReveal";
 
 const reasons = [
   { num: "01", icon: Droplet, title: "Ensure Water Supply", desc: "Drilling without a survey is a costly gamble. Start with evidence, not guesswork." },
@@ -24,31 +25,32 @@ const WhySurveySection = () => {
       </div>
 
       <div className="container relative z-10 mx-auto px-4">
-        <div className="mx-auto mb-16 max-w-2xl text-center">
-          <span className="font-heading text-sm uppercase tracking-[0.2em] text-secondary">Important</span>
-          <h2 className="mt-3 font-heading text-4xl font-bold text-primary-foreground md:text-5xl">
-            Why Survey Before Drilling?
-          </h2>
-          <p className="mt-4 text-lg leading-relaxed text-primary-foreground/65">
-            A strong borehole project starts long before drilling. These are the reasons surveying matters first.
-          </p>
-        </div>
+        <RevealWrapper direction="up">
+          <div className="mx-auto mb-16 max-w-2xl text-center">
+            <span className="font-heading text-sm uppercase tracking-[0.2em] text-secondary">Important</span>
+            <h2 className="mt-3 font-heading text-4xl font-bold text-primary-foreground md:text-5xl">
+              Why Survey Before Drilling?
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-primary-foreground/65">
+              A strong borehole project starts long before drilling. These are the reasons surveying matters first.
+            </p>
+          </div>
+        </RevealWrapper>
 
         <div className="mx-auto grid max-w-6xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {reasons.map((reason) => (
-            <div
-              key={reason.title}
-              className="rounded-2xl border border-primary-foreground/10 bg-primary-foreground/[0.06] p-6 backdrop-blur-sm transition-all duration-300 hover:bg-primary-foreground/[0.1]"
-            >
-              <div className="mb-4 flex items-center justify-between">
-                <span className="font-heading text-3xl font-bold text-primary-foreground/15">{reason.num}</span>
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary-foreground/10">
-                  <reason.icon size={20} className="text-secondary" />
+          {reasons.map((reason, i) => (
+            <RevealWrapper key={reason.title} direction="up" delay={0.08 + i * 0.08}>
+              <div className="h-full rounded-2xl border border-primary-foreground/10 bg-primary-foreground/[0.06] p-6 backdrop-blur-sm transition-all duration-300 hover:bg-primary-foreground/[0.1] hover:-translate-y-1 hover:shadow-lg hover:shadow-secondary/5">
+                <div className="mb-4 flex items-center justify-between">
+                  <span className="font-heading text-3xl font-bold text-primary-foreground/15">{reason.num}</span>
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary-foreground/10 transition-transform duration-300 hover:scale-110">
+                    <reason.icon size={20} className="text-secondary" />
+                  </div>
                 </div>
+                <h3 className="font-heading text-xl font-bold uppercase text-primary-foreground">{reason.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-primary-foreground/65">{reason.desc}</p>
               </div>
-              <h3 className="font-heading text-xl font-bold uppercase text-primary-foreground">{reason.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-primary-foreground/65">{reason.desc}</p>
-            </div>
+            </RevealWrapper>
           ))}
         </div>
       </div>
