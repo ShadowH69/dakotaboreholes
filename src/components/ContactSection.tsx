@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Phone, Mail, MapPin, FileText } from "lucide-react";
 import QuoteFormDialog from "./QuoteFormDialog";
+import { RevealWrapper } from "@/hooks/useScrollReveal";
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
@@ -14,58 +15,66 @@ const ContactSection = () => {
   return (
     <section id="contact" className="relative py-24 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="font-heading text-sm uppercase tracking-[0.2em] text-secondary">Let's talk</span>
-          <h2 className="font-heading text-4xl md:text-5xl font-bold uppercase text-foreground mt-3">
-            Get In Touch
-          </h2>
-          <p className="mt-4 text-muted-foreground font-body text-lg leading-relaxed">
-            Ready to find water? Contact us for a geo water survey starting at just R2,500.
-          </p>
-        </div>
+        <RevealWrapper direction="up">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <span className="font-heading text-sm uppercase tracking-[0.2em] text-secondary">Let's talk</span>
+            <h2 className="font-heading text-4xl md:text-5xl font-bold uppercase text-foreground mt-3">
+              Get In Touch
+            </h2>
+            <p className="mt-4 text-muted-foreground font-body text-lg leading-relaxed">
+              Ready to find water? Contact us for a geo water survey starting at just R2,500.
+            </p>
+          </div>
+        </RevealWrapper>
 
         <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-          <a href="tel:0712857397" className="flex flex-col items-center gap-4 p-8 rounded-lg border border-border bg-card hover:border-primary/30 hover:shadow-lg transition-all duration-300 group">
-            <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <Phone size={24} className="text-primary" />
-            </div>
-            <span className="font-heading text-lg text-foreground">071 285 7397</span>
-            <span className="text-muted-foreground text-sm">077 493 8076</span>
-          </a>
-          <a href="mailto:dakotaboreholes@gmail.com" className="flex flex-col items-center gap-4 p-8 rounded-lg border border-border bg-card hover:border-primary/30 hover:shadow-lg transition-all duration-300 group">
-            <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <Mail size={24} className="text-primary" />
-            </div>
-            <span className="font-heading text-sm text-foreground">dakotaboreholes@gmail.com</span>
-            <span className="text-muted-foreground text-xs">boreholeman2011@gmail.com</span>
-          </a>
-          <div className="flex flex-col items-center gap-4 p-8 rounded-lg border border-border bg-card">
-            <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
-              <MapPin size={24} className="text-primary" />
-            </div>
-            <span className="font-heading text-lg text-foreground text-center">South Africa</span>
-            <span className="text-muted-foreground text-sm text-center">Dakota Plumbing (Pty) Ltd<br/>Reg 2011/105031/07</span>
-          </div>
+          {[
+            { href: "tel:0712857397", icon: <Phone size={24} className="text-primary" />, title: "071 285 7397", sub: "077 493 8076" },
+            { href: "mailto:dakotaboreholes@gmail.com", icon: <Mail size={24} className="text-primary" />, title: "dakotaboreholes@gmail.com", sub: "boreholeman2011@gmail.com", titleClass: "text-sm" },
+            { icon: <MapPin size={24} className="text-primary" />, title: "South Africa", sub: "Dakota Plumbing (Pty) Ltd\nReg 2011/105031/07" },
+          ].map((card, i) => (
+            <RevealWrapper key={i} direction="up" delay={0.1 + i * 0.1}>
+              {card.href ? (
+                <a href={card.href} className="flex flex-col items-center gap-4 p-8 rounded-2xl border border-border bg-card hover:border-primary/30 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    {card.icon}
+                  </div>
+                  <span className={`font-heading ${card.titleClass || "text-lg"} text-foreground`}>{card.title}</span>
+                  <span className="text-muted-foreground text-sm">{card.sub}</span>
+                </a>
+              ) : (
+                <div className="flex flex-col items-center gap-4 p-8 rounded-2xl border border-border bg-card">
+                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
+                    {card.icon}
+                  </div>
+                  <span className="font-heading text-lg text-foreground text-center">{card.title}</span>
+                  <span className="text-muted-foreground text-sm text-center whitespace-pre-line">{card.sub}</span>
+                </div>
+              )}
+            </RevealWrapper>
+          ))}
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12">
-          <a
-            href="https://wa.me/27712857397"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 rounded bg-[hsl(var(--whatsapp))] px-8 py-4 font-heading text-lg uppercase tracking-wider text-[hsl(var(--whatsapp-foreground))] transition hover:brightness-110"
-          >
-            <WhatsAppIcon className="h-5 w-5" />
-            WhatsApp Us
-          </a>
-          <button
-            onClick={() => setQuoteOpen(true)}
-            className="inline-flex items-center gap-3 bg-secondary hover:brightness-110 px-8 py-4 rounded font-heading text-lg uppercase tracking-wider text-secondary-foreground transition"
-          >
-            <FileText size={18} />
-            Quotes
-          </button>
-        </div>
+        <RevealWrapper direction="up" delay={0.4}>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12">
+            <a
+              href="https://wa.me/27712857397"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 rounded-xl bg-[hsl(var(--whatsapp))] px-8 py-4 font-heading text-lg uppercase tracking-wider text-[hsl(var(--whatsapp-foreground))] transition-all duration-300 hover:brightness-110 hover:shadow-lg hover:shadow-[hsl(var(--whatsapp))]/30 hover:-translate-y-0.5"
+            >
+              <WhatsAppIcon className="h-5 w-5" />
+              WhatsApp Us
+            </a>
+            <button
+              onClick={() => setQuoteOpen(true)}
+              className="inline-flex items-center gap-3 bg-secondary hover:brightness-110 px-8 py-4 rounded-xl font-heading text-lg uppercase tracking-wider text-secondary-foreground transition-all duration-300 hover:shadow-lg hover:shadow-secondary/30 hover:-translate-y-0.5"
+            >
+              <FileText size={18} />
+              Quotes
+            </button>
+          </div>
+        </RevealWrapper>
         <QuoteFormDialog open={quoteOpen} onClose={() => setQuoteOpen(false)} />
       </div>
     </section>
