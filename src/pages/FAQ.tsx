@@ -1,6 +1,8 @@
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { ArrowLeft } from "lucide-react";
-import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+import { RevealWrapper } from "@/hooks/useScrollReveal";
 
 const surveyingFAQs = [
   { q: "What is geophysical surveying?", a: "Geophysical surveying uses advanced equipment to analyse subsurface geological conditions — identifying water-bearing fractures, aquifer depth, and expected yield — before any drilling begins." },
@@ -21,96 +23,74 @@ const drillingFAQs = [
   { q: "What maintenance does a borehole need?", a: "Boreholes require minimal maintenance — periodic pump servicing, water quality testing, and occasional yield checks to ensure long-term performance." },
 ];
 
-const FAQ = () => {
-  return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="bg-foreground py-16 md:py-24">
-        <div className="container mx-auto px-4">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-primary-foreground/60 hover:text-secondary transition-colors font-body text-sm mb-8"
-          >
-            <ArrowLeft size={16} />
-            Back to Home
-          </Link>
-          <h1 className="font-heading text-4xl md:text-6xl font-bold uppercase text-primary-foreground">
-            Frequently Asked<br />
-            <span className="text-secondary">Questions</span>
-          </h1>
-          <p className="mt-4 text-primary-foreground/60 font-body text-lg max-w-xl">
-            Everything you need to know about geophysical surveying and borehole drilling.
-          </p>
+const FAQ = () => (
+  <div className="min-h-screen bg-background">
+    <Navbar />
+
+    {/* Header */}
+    <section className="pt-28 pb-14 bg-[hsl(var(--section-dark))]">
+      <div className="container mx-auto px-4 lg:px-8">
+        <div className="flex items-center gap-2 text-xs font-body text-primary-foreground/40 mb-4">
+          <a href="/" className="hover:text-primary-foreground transition-colors">Home</a>
+          <span>/</span>
+          <span className="text-secondary">FAQ</span>
         </div>
+        <h1 className="font-heading text-4xl md:text-5xl font-bold uppercase text-primary-foreground">
+          Frequently Asked <span className="text-secondary">Questions</span>
+        </h1>
+        <p className="mt-3 text-primary-foreground/50 max-w-lg">
+          Everything you need to know about geophysical surveying and borehole drilling.
+        </p>
       </div>
+    </section>
 
-      {/* Content */}
-      <div className="container mx-auto px-4 py-16 md:py-24">
-        <div className="max-w-3xl mx-auto space-y-16">
-          {/* Surveying FAQs */}
-          <div>
-            <span className="font-heading text-sm uppercase tracking-[0.2em] text-secondary">Surveying</span>
-            <h2 className="font-heading text-2xl md:text-3xl font-bold uppercase text-foreground mt-2 mb-8">
-              Geophysical Surveying
-            </h2>
-            <Accordion type="single" collapsible className="space-y-3">
-              {surveyingFAQs.map((faq, i) => (
-                <AccordionItem
-                  key={i}
-                  value={`survey-${i}`}
-                  className="border border-border rounded-lg px-6 data-[state=open]:border-primary/30 data-[state=open]:shadow-sm transition-all"
-                >
-                  <AccordionTrigger className="font-heading text-base font-semibold text-foreground hover:no-underline">
-                    {faq.q}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground font-body leading-relaxed">
-                    {faq.a}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
+    {/* Content */}
+    <section className="py-16 lg:py-24">
+      <div className="container mx-auto px-4 lg:px-8 max-w-3xl space-y-14">
+        {[
+          { label: "Surveying", title: "Geophysical Surveying", items: surveyingFAQs, prefix: "survey" },
+          { label: "Drilling", title: "Borehole Drilling", items: drillingFAQs, prefix: "drill" },
+        ].map((section) => (
+          <RevealWrapper key={section.prefix} direction="up">
+            <div>
+              <span className="font-heading text-xs uppercase tracking-[0.2em] text-secondary font-semibold">{section.label}</span>
+              <h2 className="font-heading text-2xl md:text-3xl font-bold uppercase text-foreground mt-1 mb-6">{section.title}</h2>
+              <Accordion type="single" collapsible className="space-y-2.5">
+                {section.items.map((faq, i) => (
+                  <AccordionItem
+                    key={i}
+                    value={`${section.prefix}-${i}`}
+                    className="border border-border rounded-xl px-5 data-[state=open]:border-primary/25 data-[state=open]:shadow-sm transition-all"
+                  >
+                    <AccordionTrigger className="font-heading text-sm font-semibold text-foreground hover:no-underline">
+                      {faq.q}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
+                      {faq.a}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+          </RevealWrapper>
+        ))}
 
-          {/* Drilling FAQs */}
-          <div>
-            <span className="font-heading text-sm uppercase tracking-[0.2em] text-secondary">Drilling</span>
-            <h2 className="font-heading text-2xl md:text-3xl font-bold uppercase text-foreground mt-2 mb-8">
-              Borehole Drilling
-            </h2>
-            <Accordion type="single" collapsible className="space-y-3">
-              {drillingFAQs.map((faq, i) => (
-                <AccordionItem
-                  key={i}
-                  value={`drill-${i}`}
-                  className="border border-border rounded-lg px-6 data-[state=open]:border-primary/30 data-[state=open]:shadow-sm transition-all"
-                >
-                  <AccordionTrigger className="font-heading text-base font-semibold text-foreground hover:no-underline">
-                    {faq.q}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground font-body leading-relaxed">
-                    {faq.a}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-
-          {/* CTA */}
+        <RevealWrapper direction="up">
           <div className="text-center pt-8 border-t border-border">
-            <p className="text-muted-foreground font-body text-lg mb-6">
-              Still have questions? Get in touch with our team.
-            </p>
+            <p className="text-muted-foreground mb-5">Still have questions?</p>
             <a
-              href="tel:0712857397"
-              className="inline-flex items-center gap-2 bg-secondary px-8 py-3 rounded-md font-heading text-sm uppercase tracking-wider text-secondary-foreground hover:brightness-110 transition"
+              href="/contact"
+              className="inline-flex items-center gap-2 bg-secondary px-7 py-3 rounded-xl font-heading text-xs uppercase tracking-wider text-secondary-foreground transition-all hover:shadow-lg hover:shadow-secondary/20 hover:scale-[1.02] group"
             >
-              Call Us Now
+              Contact Us <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
             </a>
           </div>
-        </div>
+        </RevealWrapper>
       </div>
-    </div>
-  );
-};
+    </section>
+
+    <Footer />
+  </div>
+);
 
 export default FAQ;
