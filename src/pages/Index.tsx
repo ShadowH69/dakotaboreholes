@@ -24,6 +24,7 @@ const Index = () => {
     <>
       {!splashDone && <WaterSplash onComplete={handleSplashComplete} />}
       <Navbar />
+      <HeroSlideshow />
       <HeroSection />
       <SolutionSection />
       <ServicesSection />
