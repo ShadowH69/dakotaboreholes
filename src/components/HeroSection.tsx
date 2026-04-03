@@ -2,72 +2,79 @@ import { ArrowDown, Droplets, Shield, Zap } from "lucide-react";
 import logo from "@/assets/dakota-logo.png";
 import heroBg from "@/assets/hero-main.jpg";
 
-const HeroSection = () => {
-  return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Hero background image */}
-      <div className="absolute inset-0">
-        <img src={heroBg} alt="" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-foreground/70" />
-      </div>
+const stats = [
+  { icon: Droplets, value: "300m", label: "Survey Depth", color: "text-water" },
+  { icon: Shield, value: "13+", label: "Years Experience", color: "text-secondary" },
+  { icon: Zap, value: "100%", label: "Turnkey Service", color: "text-gold" },
+];
 
-      <div className="relative z-10 container mx-auto px-4 pt-28 pb-20">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left — Copy */}
-          <div>
-            <div className="animate-fade-up flex items-center gap-3 mb-6">
-              <img src={logo} alt="Dakota Plumbing" className="h-12 w-auto" />
-              <div>
-                <span className="font-heading text-xs uppercase tracking-[0.2em] text-primary-foreground/50">Dakota Plumbing (Pty) Ltd</span>
-              </div>
-            </div>
+const HeroSection = () => (
+  <section id="home" className="relative min-h-[90vh] lg:min-h-screen flex items-center overflow-hidden">
+    <div className="absolute inset-0">
+      <img src={heroBg} alt="" className="w-full h-full object-cover" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--section-dark))]/90 via-[hsl(var(--section-dark))]/70 to-[hsl(var(--section-dark))]/50" />
+    </div>
 
-            <h1 className="animate-fade-up animation-delay-200 font-heading text-5xl md:text-7xl lg:text-8xl font-bold uppercase text-primary-foreground leading-[0.9] tracking-tight">
-              Find Water
-              <br />
-              <span className="text-secondary">Find Freedom</span>
-            </h1>
-
-            <p className="animate-fade-up animation-delay-400 mt-8 text-primary-foreground/60 font-body text-lg md:text-xl leading-relaxed max-w-lg">
-              Complete turnkey groundwater solutions — from professional surveys to fully equipped, working boreholes.
-            </p>
-
-            <div className="animate-fade-up animation-delay-600 mt-10 flex flex-col sm:flex-row gap-4">
-              <a href="#services" className="inline-flex items-center justify-center gap-2 bg-primary px-8 py-4 rounded font-heading text-base uppercase tracking-wider text-primary-foreground hover:brightness-125 transition">
-                Our Services
-              </a>
-              <a href="#contact" className="inline-flex items-center justify-center gap-2 border border-primary-foreground/20 px-8 py-4 rounded font-heading text-base uppercase tracking-wider text-primary-foreground/80 hover:border-secondary hover:text-secondary transition">
-                Get a Quote
-              </a>
-            </div>
+    <div className="relative z-10 container mx-auto px-4 lg:px-8 pt-28 pb-16 lg:pt-32 lg:pb-24">
+      <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-16 items-center">
+        <div>
+          <div className="animate-fade-up flex items-center gap-3 mb-8">
+            <img src={logo} alt="Dakota Plumbing" className="h-10 w-auto" />
+            <span className="font-body text-xs uppercase tracking-[0.2em] text-primary-foreground/40 font-medium">
+              Dakota Plumbing (Pty) Ltd
+            </span>
           </div>
 
-          {/* Right — Stats */}
-          <div className="animate-fade-up animation-delay-600 grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div className="text-center p-6 rounded-lg border border-primary-foreground/10 bg-primary-foreground/[0.03]">
-              <Droplets className="mx-auto mb-3 text-water" size={28} />
-              <span className="block font-heading text-4xl font-bold text-primary-foreground">300m</span>
-              <span className="text-primary-foreground/50 font-body text-sm mt-1">Survey Depth</span>
-            </div>
-            <div className="text-center p-6 rounded-lg border border-primary-foreground/10 bg-primary-foreground/[0.03]">
-              <Shield className="mx-auto mb-3 text-secondary" size={28} />
-              <span className="block font-heading text-4xl font-bold text-primary-foreground">13+</span>
-              <span className="text-primary-foreground/50 font-body text-sm mt-1">Years Experience</span>
-            </div>
-            <div className="text-center p-6 rounded-lg border border-primary-foreground/10 bg-primary-foreground/[0.03]">
-              <Zap className="mx-auto mb-3 text-gold" size={28} />
-              <span className="block font-heading text-4xl font-bold text-primary-foreground">100%</span>
-              <span className="text-primary-foreground/50 font-body text-sm mt-1">Turnkey Service</span>
-            </div>
+          <h1 className="animate-fade-up animation-delay-200 font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold uppercase text-primary-foreground leading-[0.9] tracking-tight">
+            Find Water
+            <br />
+            <span className="text-secondary">Find Freedom</span>
+          </h1>
+
+          <p className="animate-fade-up animation-delay-400 mt-8 text-primary-foreground/55 font-body text-base sm:text-lg leading-relaxed max-w-lg">
+            Complete turnkey groundwater solutions — from professional surveys to fully equipped, working boreholes.
+          </p>
+
+          <div className="animate-fade-up animation-delay-600 mt-10 flex flex-col sm:flex-row gap-4">
+            <a
+              href="#services"
+              className="inline-flex items-center justify-center gap-2 bg-secondary px-8 py-4 rounded-xl font-heading text-sm uppercase tracking-wider text-secondary-foreground transition-all duration-300 hover:shadow-xl hover:shadow-secondary/25 hover:scale-[1.02]"
+            >
+              Our Services
+            </a>
+            <a
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 border border-primary-foreground/15 px-8 py-4 rounded-xl font-heading text-sm uppercase tracking-wider text-primary-foreground/70 transition-all duration-300 hover:border-secondary hover:text-secondary hover:bg-secondary/5"
+            >
+              Get a Quote
+            </a>
           </div>
         </div>
 
-        <a href="#solution" className="flex justify-center mt-16 animate-bounce text-primary-foreground/30">
-          <ArrowDown size={28} />
-        </a>
+        {/* Stats cards */}
+        <div className="animate-fade-up animation-delay-600 grid grid-cols-3 gap-3 sm:gap-4">
+          {stats.map((s) => (
+            <div
+              key={s.label}
+              className="text-center p-4 sm:p-6 rounded-2xl border border-primary-foreground/8 bg-primary-foreground/[0.03] backdrop-blur-sm transition-all duration-300 hover:bg-primary-foreground/[0.06] hover:-translate-y-1"
+            >
+              <s.icon className={`mx-auto mb-2 sm:mb-3 ${s.color}`} size={24} />
+              <span className="block font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-foreground">
+                {s.value}
+              </span>
+              <span className="text-primary-foreground/40 font-body text-[11px] sm:text-xs mt-1 block">
+                {s.label}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
-    </section>
-  );
-};
+
+      <a href="#solution" className="flex justify-center mt-12 lg:mt-16 animate-bounce text-primary-foreground/25">
+        <ArrowDown size={24} />
+      </a>
+    </div>
+  </section>
+);
 
 export default HeroSection;
