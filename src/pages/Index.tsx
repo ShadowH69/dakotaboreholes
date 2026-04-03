@@ -15,10 +15,7 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   const [splashDone, setSplashDone] = useState(false);
-
-  const handleSplashComplete = useCallback(() => {
-    setSplashDone(true);
-  }, []);
+  const handleSplashComplete = useCallback(() => setSplashDone(true), []);
 
   return (
     <>
