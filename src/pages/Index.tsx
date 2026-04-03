@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
 import WaterSplash from "@/components/WaterSplash";
 import Navbar from "@/components/Navbar";
+import HeroSlideshow from "@/components/HeroSlideshow";
 import HeroSection from "@/components/HeroSection";
 import SolutionSection from "@/components/SolutionSection";
 import ServicesSection from "@/components/ServicesSection";
