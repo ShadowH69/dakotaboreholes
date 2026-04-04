@@ -33,37 +33,37 @@ const Contact = () => {
       <Navbar />
 
       {/* Header */}
-      <section className="pt-28 pb-14 bg-[hsl(var(--section-dark))]">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex items-center gap-2 text-xs font-body text-primary-foreground/40 mb-4">
+      <section className="pt-24 sm:pt-28 pb-10 sm:pb-14 bg-[hsl(var(--section-dark))]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-2 text-[10px] sm:text-xs font-body text-primary-foreground/40 mb-3 sm:mb-4">
             <a href="/" className="hover:text-primary-foreground transition-colors">Home</a>
             <span>/</span>
             <span className="text-secondary">Contact</span>
           </div>
-          <h1 className="font-heading text-4xl md:text-5xl font-bold uppercase text-primary-foreground">
+          <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold uppercase text-primary-foreground">
             Contact <span className="text-secondary">Us</span>
           </h1>
         </div>
       </section>
 
       {/* Cards + Map */}
-      <section className="py-16 lg:py-24 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid lg:grid-cols-[1fr_1.2fr] gap-6 items-start">
-            <div className="space-y-3">
+      <section className="py-10 sm:py-16 lg:py-24 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-[1fr_1.2fr] gap-4 sm:gap-6 items-start">
+            <div className="grid grid-cols-2 sm:grid-cols-1 gap-2.5 sm:gap-3">
               {contactCards.map((card, i) => (
                 <RevealWrapper key={card.title} direction="left" delay={i * 0.06}>
-                  <div className="flex items-start gap-4 p-5 rounded-2xl border border-border bg-card hover:border-primary/20 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 group">
-                    <div className="w-11 h-11 rounded-xl bg-primary/8 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                      <card.icon size={18} className={card.color} />
+                  <div className="flex flex-col sm:flex-row items-start gap-2.5 sm:gap-4 p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-border bg-card hover:border-primary/20 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 group h-full">
+                    <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-primary/8 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                      <card.icon size={16} className={`${card.color} sm:w-[18px] sm:h-[18px]`} />
                     </div>
-                    <div>
-                      <h3 className="font-heading font-bold text-foreground text-sm mb-1">{card.title}</h3>
+                    <div className="min-w-0">
+                      <h3 className="font-heading font-bold text-foreground text-xs sm:text-sm mb-0.5 sm:mb-1">{card.title}</h3>
                       {card.lines.map((line, j) =>
                         card.links ? (
-                          <a key={j} href={card.links[j]} className="block text-muted-foreground text-sm hover:text-foreground transition-colors">{line}</a>
+                          <a key={j} href={card.links[j]} className="block text-muted-foreground text-[11px] sm:text-sm hover:text-foreground transition-colors truncate">{line}</a>
                         ) : (
-                          <p key={j} className="text-muted-foreground text-sm">{line}</p>
+                          <p key={j} className="text-muted-foreground text-[11px] sm:text-sm">{line}</p>
                         )
                       )}
                     </div>
@@ -73,11 +73,11 @@ const Contact = () => {
             </div>
 
             <RevealWrapper direction="right" delay={0.12}>
-              <div className="rounded-2xl overflow-hidden border border-border shadow-lg h-full min-h-[420px]">
+              <div className="rounded-xl sm:rounded-2xl overflow-hidden border border-border shadow-lg h-full min-h-[300px] sm:min-h-[420px]">
                 <iframe
                   title="Dakota Plumbing Location"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.9999999999995!2d28.009861!3d-26.2441689!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e95092929d1a67b%3A0x98552f4c63d5ae3c!2s5%20Delamere%20Rd%2C%20Robertsham%2C%20Johannesburg%20South%2C%202091!5e0!3m2!1sen!2sza!4v1700000000000"
-                  width="100%" height="100%" style={{ border: 0, minHeight: 420 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"
+                  width="100%" height="100%" style={{ border: 0, minHeight: 300 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"
                 />
               </div>
             </RevealWrapper>
@@ -86,35 +86,35 @@ const Contact = () => {
       </section>
 
       {/* Form */}
-      <section className="py-16 lg:py-24 bg-[hsl(var(--section-dark))]">
-        <div className="container mx-auto px-4 lg:px-8 max-w-3xl">
+      <section className="py-10 sm:py-16 lg:py-24 bg-[hsl(var(--section-dark))]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
           <RevealWrapper direction="up">
-            <div className="text-center mb-10">
-              <span className="font-heading text-xs uppercase tracking-[0.2em] text-secondary font-semibold">Send a message</span>
-              <h2 className="font-heading text-2xl md:text-3xl font-bold uppercase text-primary-foreground mt-2">Contact Form</h2>
+            <div className="text-center mb-8 sm:mb-10">
+              <span className="font-heading text-[10px] sm:text-xs uppercase tracking-[0.2em] text-secondary font-semibold">Send a message</span>
+              <h2 className="font-heading text-xl sm:text-2xl md:text-3xl font-bold uppercase text-primary-foreground mt-1.5 sm:mt-2">Contact Form</h2>
             </div>
           </RevealWrapper>
 
           <RevealWrapper direction="up" delay={0.1}>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid sm:grid-cols-2 gap-4">
+            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+              <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
-                  <label className="block font-heading text-xs font-semibold text-primary-foreground mb-1.5 uppercase tracking-wider">Name *</label>
-                  <input type="text" placeholder="Your name" maxLength={100} value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="w-full border border-primary-foreground/15 bg-primary-foreground/5 rounded-xl px-4 py-3 text-sm text-primary-foreground placeholder:text-primary-foreground/25 focus:outline-none focus:border-secondary transition-colors" />
+                  <label className="block font-heading text-[10px] sm:text-xs font-semibold text-primary-foreground mb-1 sm:mb-1.5 uppercase tracking-wider">Name *</label>
+                  <input type="text" placeholder="Your name" maxLength={100} value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="w-full border border-primary-foreground/15 bg-primary-foreground/5 rounded-lg sm:rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-primary-foreground placeholder:text-primary-foreground/25 focus:outline-none focus:border-secondary transition-colors" />
                 </div>
                 <div>
-                  <label className="block font-heading text-xs font-semibold text-primary-foreground mb-1.5 uppercase tracking-wider">Phone *</label>
-                  <input type="tel" placeholder="Your phone" maxLength={20} value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className="w-full border border-primary-foreground/15 bg-primary-foreground/5 rounded-xl px-4 py-3 text-sm text-primary-foreground placeholder:text-primary-foreground/25 focus:outline-none focus:border-secondary transition-colors" />
+                  <label className="block font-heading text-[10px] sm:text-xs font-semibold text-primary-foreground mb-1 sm:mb-1.5 uppercase tracking-wider">Phone *</label>
+                  <input type="tel" placeholder="Your phone" maxLength={20} value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className="w-full border border-primary-foreground/15 bg-primary-foreground/5 rounded-lg sm:rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-primary-foreground placeholder:text-primary-foreground/25 focus:outline-none focus:border-secondary transition-colors" />
                 </div>
               </div>
-              <div className="grid sm:grid-cols-2 gap-4">
+              <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
-                  <label className="block font-heading text-xs font-semibold text-primary-foreground mb-1.5 uppercase tracking-wider">Email *</label>
-                  <input type="email" placeholder="Your email" maxLength={255} value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="w-full border border-primary-foreground/15 bg-primary-foreground/5 rounded-xl px-4 py-3 text-sm text-primary-foreground placeholder:text-primary-foreground/25 focus:outline-none focus:border-secondary transition-colors" />
+                  <label className="block font-heading text-[10px] sm:text-xs font-semibold text-primary-foreground mb-1 sm:mb-1.5 uppercase tracking-wider">Email *</label>
+                  <input type="email" placeholder="Your email" maxLength={255} value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="w-full border border-primary-foreground/15 bg-primary-foreground/5 rounded-lg sm:rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-primary-foreground placeholder:text-primary-foreground/25 focus:outline-none focus:border-secondary transition-colors" />
                 </div>
                 <div>
-                  <label className="block font-heading text-xs font-semibold text-primary-foreground mb-1.5 uppercase tracking-wider">Service</label>
-                  <select value={form.service} onChange={(e) => setForm({ ...form, service: e.target.value })} className="w-full border border-primary-foreground/15 bg-primary-foreground/5 rounded-xl px-4 py-3 text-sm text-primary-foreground focus:outline-none focus:border-secondary transition-colors">
+                  <label className="block font-heading text-[10px] sm:text-xs font-semibold text-primary-foreground mb-1 sm:mb-1.5 uppercase tracking-wider">Service</label>
+                  <select value={form.service} onChange={(e) => setForm({ ...form, service: e.target.value })} className="w-full border border-primary-foreground/15 bg-primary-foreground/5 rounded-lg sm:rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-primary-foreground focus:outline-none focus:border-secondary transition-colors">
                     <option value="">Select service</option>
                     <option value="Geo Water Survey">Geo Water Survey</option>
                     <option value="Borehole Drilling">Borehole Drilling</option>
@@ -125,11 +125,11 @@ const Contact = () => {
                 </div>
               </div>
               <div>
-                <label className="block font-heading text-xs font-semibold text-primary-foreground mb-1.5 uppercase tracking-wider">Message *</label>
-                <textarea placeholder="Your message" maxLength={1000} rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} className="w-full border border-primary-foreground/15 bg-primary-foreground/5 rounded-xl px-4 py-3 text-sm text-primary-foreground placeholder:text-primary-foreground/25 focus:outline-none focus:border-secondary transition-colors resize-y" />
+                <label className="block font-heading text-[10px] sm:text-xs font-semibold text-primary-foreground mb-1 sm:mb-1.5 uppercase tracking-wider">Message *</label>
+                <textarea placeholder="Your message" maxLength={1000} rows={4} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} className="w-full border border-primary-foreground/15 bg-primary-foreground/5 rounded-lg sm:rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-primary-foreground placeholder:text-primary-foreground/25 focus:outline-none focus:border-secondary transition-colors resize-y" />
               </div>
-              <button type="submit" className="inline-flex items-center gap-2 bg-secondary hover:shadow-lg hover:shadow-secondary/20 px-7 py-3 rounded-xl font-heading text-xs uppercase tracking-wider text-secondary-foreground transition-all duration-300 hover:scale-[1.02]">
-                <Send size={14} /> Submit
+              <button type="submit" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-secondary hover:shadow-lg hover:shadow-secondary/20 px-6 sm:px-7 py-2.5 sm:py-3 rounded-lg sm:rounded-xl font-heading text-[10px] sm:text-xs uppercase tracking-wider text-secondary-foreground transition-all duration-300 hover:scale-[1.02]">
+                <Send size={13} /> Submit
               </button>
             </form>
           </RevealWrapper>

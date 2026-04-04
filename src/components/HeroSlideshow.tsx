@@ -44,7 +44,7 @@ const HeroSlideshow = () => {
 
   return (
     <section
-      className="relative w-full h-[55vh] sm:h-[65vh] md:h-[80vh] lg:h-screen overflow-hidden"
+      className="relative w-full h-[45vh] sm:h-[55vh] md:h-[70vh] lg:h-screen overflow-hidden"
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
     >
@@ -65,25 +65,25 @@ const HeroSlideshow = () => {
       ))}
 
       {/* Bottom gradient blending */}
-      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent z-[2]" />
+      <div className="absolute inset-x-0 bottom-0 h-20 sm:h-40 bg-gradient-to-t from-background to-transparent z-[2]" />
 
-      {/* Arrows */}
-      <button onClick={prev} aria-label="Previous" className="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-black/25 backdrop-blur-sm flex items-center justify-center text-white/80 hover:bg-black/40 hover:text-white transition-all duration-300">
-        <ChevronLeft size={22} />
+      {/* Arrows - larger touch targets on mobile */}
+      <button onClick={prev} aria-label="Previous" className="absolute left-2 sm:left-3 md:left-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-black/25 backdrop-blur-sm flex items-center justify-center text-white/80 hover:bg-black/40 hover:text-white transition-all duration-300 active:scale-95">
+        <ChevronLeft size={20} />
       </button>
-      <button onClick={next} aria-label="Next" className="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-black/25 backdrop-blur-sm flex items-center justify-center text-white/80 hover:bg-black/40 hover:text-white transition-all duration-300">
-        <ChevronRight size={22} />
+      <button onClick={next} aria-label="Next" className="absolute right-2 sm:right-3 md:right-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-black/25 backdrop-blur-sm flex items-center justify-center text-white/80 hover:bg-black/40 hover:text-white transition-all duration-300 active:scale-95">
+        <ChevronRight size={20} />
       </button>
 
       {/* Dots */}
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+      <div className="absolute bottom-6 sm:bottom-12 left-1/2 -translate-x-1/2 z-10 flex gap-1.5 sm:gap-2">
         {slides.map((_, i) => (
           <button
             key={i}
             onClick={() => goTo(i)}
             aria-label={`Slide ${i + 1}`}
             className={`rounded-full transition-all duration-500 ${
-              current === i ? "w-8 h-2.5 bg-secondary" : "w-2.5 h-2.5 bg-white/40 hover:bg-white/60"
+              current === i ? "w-6 sm:w-8 h-2 sm:h-2.5 bg-secondary" : "w-2 sm:w-2.5 h-2 sm:h-2.5 bg-white/40 hover:bg-white/60"
             }`}
           />
         ))}
