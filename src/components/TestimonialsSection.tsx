@@ -30,28 +30,27 @@ const TestimonialsSection = () => {
     return () => clearInterval(timer);
   }, [current]);
 
-  // Show 1 on mobile, 2 on md+
   const visible = [
     testimonials[current],
     testimonials[(current + 1) % testimonials.length],
   ];
 
   return (
-    <section className="relative py-20 lg:py-28 bg-background">
-      <div className="container mx-auto px-4 lg:px-8">
+    <section className="relative py-14 sm:py-20 lg:py-28 bg-background">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <RevealWrapper direction="up">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="font-heading text-xs uppercase tracking-[0.2em] text-secondary font-semibold">
+          <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+            <span className="font-heading text-[10px] sm:text-xs uppercase tracking-[0.2em] text-secondary font-semibold">
               What Our Clients Say
             </span>
-            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold uppercase text-foreground mt-2">
+            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold uppercase text-foreground mt-1.5 sm:mt-2">
               Testimonials
             </h2>
           </div>
         </RevealWrapper>
 
         <div
-          className="grid md:grid-cols-2 gap-5 max-w-5xl mx-auto transition-all duration-500"
+          className="grid md:grid-cols-2 gap-4 sm:gap-5 max-w-5xl mx-auto transition-all duration-500"
           style={{
             opacity: isAnimating ? 0 : 1,
             transform: isAnimating ? "translateY(16px)" : "translateY(0)",
@@ -60,49 +59,49 @@ const TestimonialsSection = () => {
           {visible.map((t, i) => (
             <div
               key={`${current}-${i}`}
-              className={`relative rounded-2xl border border-border bg-card p-7 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
+              className={`relative rounded-xl sm:rounded-2xl border border-border bg-card p-5 sm:p-7 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
                 i === 1 ? "hidden md:block" : ""
               }`}
             >
-              <Quote size={28} className="text-secondary/15 absolute top-5 right-5" />
-              <div className="flex gap-0.5 mb-4">
+              <Quote size={24} className="text-secondary/15 absolute top-4 sm:top-5 right-4 sm:right-5" />
+              <div className="flex gap-0.5 mb-3 sm:mb-4">
                 {Array.from({ length: t.rating }).map((_, s) => (
-                  <Star key={s} size={14} className="fill-secondary text-secondary" />
+                  <Star key={s} size={12} className="fill-secondary text-secondary sm:w-3.5 sm:h-3.5" />
                 ))}
               </div>
-              <p className="text-foreground/75 text-sm leading-relaxed mb-6 italic">
+              <p className="text-foreground/75 text-xs sm:text-sm leading-relaxed mb-5 sm:mb-6 italic">
                 "{t.text}"
               </p>
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-secondary/15 flex items-center justify-center font-heading text-secondary font-bold text-sm">
+              <div className="flex items-center gap-2.5 sm:gap-3">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-secondary/15 flex items-center justify-center font-heading text-secondary font-bold text-xs sm:text-sm">
                   {t.name.charAt(0)}
                 </div>
                 <div>
-                  <p className="font-heading font-bold text-foreground text-sm">{t.name}</p>
-                  <p className="text-muted-foreground text-xs">{t.location}</p>
+                  <p className="font-heading font-bold text-foreground text-xs sm:text-sm">{t.name}</p>
+                  <p className="text-muted-foreground text-[10px] sm:text-xs">{t.location}</p>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="flex items-center justify-center gap-3 mt-10">
-          <button onClick={() => navigate(-1)} className="w-9 h-9 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:border-secondary hover:text-secondary transition-all duration-300">
-            <ChevronLeft size={18} />
+        <div className="flex items-center justify-center gap-2.5 sm:gap-3 mt-8 sm:mt-10">
+          <button onClick={() => navigate(-1)} className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:border-secondary hover:text-secondary transition-all duration-300 active:scale-90">
+            <ChevronLeft size={16} />
           </button>
-          <div className="flex gap-1.5">
+          <div className="flex gap-1 sm:gap-1.5">
             {testimonials.map((_, i) => (
               <button
                 key={i}
                 onClick={() => { setIsAnimating(true); setTimeout(() => { setCurrent(i); setIsAnimating(false); }, 300); }}
-                className={`h-2 rounded-full transition-all duration-400 ${
-                  i === current ? "bg-secondary w-6" : "bg-muted-foreground/20 w-2"
+                className={`h-1.5 sm:h-2 rounded-full transition-all duration-400 ${
+                  i === current ? "bg-secondary w-5 sm:w-6" : "bg-muted-foreground/20 w-1.5 sm:w-2"
                 }`}
               />
             ))}
           </div>
-          <button onClick={() => navigate(1)} className="w-9 h-9 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:border-secondary hover:text-secondary transition-all duration-300">
-            <ChevronRight size={18} />
+          <button onClick={() => navigate(1)} className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:border-secondary hover:text-secondary transition-all duration-300 active:scale-90">
+            <ChevronRight size={16} />
           </button>
         </div>
       </div>

@@ -28,44 +28,44 @@ const FAQ = () => (
     <Navbar />
 
     {/* Header */}
-    <section className="pt-28 pb-14 bg-[hsl(var(--section-dark))]">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex items-center gap-2 text-xs font-body text-primary-foreground/40 mb-4">
+    <section className="pt-24 sm:pt-28 pb-10 sm:pb-14 bg-[hsl(var(--section-dark))]">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center gap-2 text-[10px] sm:text-xs font-body text-primary-foreground/40 mb-3 sm:mb-4">
           <a href="/" className="hover:text-primary-foreground transition-colors">Home</a>
           <span>/</span>
           <span className="text-secondary">FAQ</span>
         </div>
-        <h1 className="font-heading text-4xl md:text-5xl font-bold uppercase text-primary-foreground">
+        <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold uppercase text-primary-foreground">
           Frequently Asked <span className="text-secondary">Questions</span>
         </h1>
-        <p className="mt-3 text-primary-foreground/50 max-w-lg">
+        <p className="mt-2 sm:mt-3 text-primary-foreground/50 max-w-lg text-sm sm:text-base">
           Everything you need to know about geophysical surveying and borehole drilling.
         </p>
       </div>
     </section>
 
     {/* Content */}
-    <section className="py-16 lg:py-24">
-      <div className="container mx-auto px-4 lg:px-8 max-w-3xl space-y-14">
+    <section className="py-10 sm:py-16 lg:py-24">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl space-y-10 sm:space-y-14">
         {[
           { label: "Surveying", title: "Geophysical Surveying", items: surveyingFAQs, prefix: "survey" },
           { label: "Drilling", title: "Borehole Drilling", items: drillingFAQs, prefix: "drill" },
         ].map((section) => (
           <RevealWrapper key={section.prefix} direction="up">
             <div>
-              <span className="font-heading text-xs uppercase tracking-[0.2em] text-secondary font-semibold">{section.label}</span>
-              <h2 className="font-heading text-2xl md:text-3xl font-bold uppercase text-foreground mt-1 mb-6">{section.title}</h2>
-              <Accordion type="single" collapsible className="space-y-2.5">
+              <span className="font-heading text-[10px] sm:text-xs uppercase tracking-[0.2em] text-secondary font-semibold">{section.label}</span>
+              <h2 className="font-heading text-xl sm:text-2xl md:text-3xl font-bold uppercase text-foreground mt-1 mb-4 sm:mb-6">{section.title}</h2>
+              <Accordion type="single" collapsible className="space-y-2 sm:space-y-2.5">
                 {section.items.map((faq, i) => (
                   <AccordionItem
                     key={i}
                     value={`${section.prefix}-${i}`}
-                    className="border border-border rounded-xl px-5 data-[state=open]:border-primary/25 data-[state=open]:shadow-sm transition-all"
+                    className="border border-border rounded-lg sm:rounded-xl px-4 sm:px-5 data-[state=open]:border-primary/25 data-[state=open]:shadow-sm transition-all"
                   >
-                    <AccordionTrigger className="font-heading text-sm font-semibold text-foreground hover:no-underline">
+                    <AccordionTrigger className="font-heading text-xs sm:text-sm font-semibold text-foreground hover:no-underline py-3 sm:py-4">
                       {faq.q}
                     </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
+                    <AccordionContent className="text-muted-foreground text-xs sm:text-sm leading-relaxed pb-3 sm:pb-4">
                       {faq.a}
                     </AccordionContent>
                   </AccordionItem>
@@ -76,13 +76,13 @@ const FAQ = () => (
         ))}
 
         <RevealWrapper direction="up">
-          <div className="text-center pt-8 border-t border-border">
-            <p className="text-muted-foreground mb-5">Still have questions?</p>
+          <div className="text-center pt-6 sm:pt-8 border-t border-border">
+            <p className="text-muted-foreground text-sm mb-4 sm:mb-5">Still have questions?</p>
             <a
               href="/contact"
-              className="inline-flex items-center gap-2 bg-secondary px-7 py-3 rounded-xl font-heading text-xs uppercase tracking-wider text-secondary-foreground transition-all hover:shadow-lg hover:shadow-secondary/20 hover:scale-[1.02] group"
+              className="inline-flex items-center gap-2 bg-secondary px-6 sm:px-7 py-2.5 sm:py-3 rounded-lg sm:rounded-xl font-heading text-[10px] sm:text-xs uppercase tracking-wider text-secondary-foreground transition-all hover:shadow-lg hover:shadow-secondary/20 hover:scale-[1.02] group"
             >
-              Contact Us <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+              Contact Us <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
             </a>
           </div>
         </RevealWrapper>
